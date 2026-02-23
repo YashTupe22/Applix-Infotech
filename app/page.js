@@ -4,6 +4,7 @@ import ServicesSection from './components/ServicesSection'
 import HowWeWorkSection from './components/HowWeWorkSection'
 import ShowcaseSection from './components/ShowcaseSection'
 import WhyChooseSection from './components/WhyChooseSection'
+import PricingPreview from './components/PricingPreview'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
 
@@ -20,6 +21,8 @@ export default function Home() {
             <ShowcaseSection />
             <div className="section-divider" />
             <WhyChooseSection />
+            <div className="section-divider" />
+            <PricingPreview />
             <CTASection />
             <Footer />
         </main>

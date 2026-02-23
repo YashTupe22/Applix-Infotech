@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
@@ -12,7 +13,7 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    const navLinks = ['Services', 'How We Work', 'Showcase', 'Contact']
+    const navLinks = ['Services', 'How We Work', 'Showcase', 'Pricing', 'Contact']
 
     return (
         <motion.nav
@@ -20,8 +21,8 @@ export default function Navbar() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? 'bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/20'
-                    : 'bg-transparent'
+                ? 'bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/20'
+                : 'bg-transparent'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -45,15 +46,16 @@ export default function Navbar() {
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-8">
                     {navLinks.map((link) => (
-                        <motion.a
+                        <Link
                             key={link}
-                            href={`#${link.toLowerCase().replace(' ', '-')}`}
-                            whileHover={{ y: -1 }}
+                            href={link === 'Pricing' ? '/pricing' : `#${link.toLowerCase().replace(' ', '-')}`}
                             className="text-slate-400 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
                         >
-                            {link}
-                            <span className="absolute -bottom-1 left-0 w-0 h-px bg-electric group-hover:w-full transition-all duration-300" />
-                        </motion.a>
+                            <motion.span whileHover={{ y: -1 }} className="block">
+                                {link}
+                                <span className="absolute -bottom-1 left-0 w-0 h-px bg-electric group-hover:w-full transition-all duration-300" />
+                            </motion.span>
+                        </Link>
                     ))}
                 </div>
 
@@ -92,14 +94,14 @@ export default function Navbar() {
                     >
                         <div className="px-6 py-4 flex flex-col gap-4">
                             {navLinks.map((link) => (
-                                <a
+                                <Link
                                     key={link}
-                                    href={`#${link.toLowerCase().replace(' ', '-')}`}
+                                    href={link === 'Pricing' ? '/pricing' : `#${link.toLowerCase().replace(' ', '-')}`}
                                     onClick={() => setMenuOpen(false)}
                                     className="text-slate-300 hover:text-white text-sm font-medium py-2 border-b border-white/5 transition-colors"
                                 >
                                     {link}
-                                </a>
+                                </Link>
                             ))}
                             <a
                                 href="#contact"

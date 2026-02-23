@@ -47,16 +47,17 @@ const services = [
     {
         icon: (
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5" />
             </svg>
         ),
-        title: 'UI/UX Design',
-        description: 'Premium interface design that converts. Figma prototypes, design systems, and pixel-perfect implementations.',
+        title: 'Content Creation',
+        description: 'Compelling copy, social media content, and digital marketing assets that drive engagement and convert visitors into clients.',
         color: 'electric',
         glow: 'hover:shadow-glow-blue',
         gradient: 'from-electric/15 to-cyan/15',
         border: 'hover:border-electric-light/40',
-        tag: 'Figma · Framer · CSS',
+        tag: 'Copywriting · Social · SEO',
     },
 ]
 
@@ -69,13 +70,11 @@ const colorMap = {
 export default function ServicesSection() {
     return (
         <section id="services" className="relative py-28 bg-charcoal overflow-hidden">
-            {/* Background accent */}
             <div className="absolute inset-0 opacity-30"
                 style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(79,70,229,0.15) 0%, transparent 60%)' }}
             />
 
             <div className="relative z-10 max-w-7xl mx-auto px-6">
-                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -94,7 +93,6 @@ export default function ServicesSection() {
                     </p>
                 </motion.div>
 
-                {/* Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                     {services.map((service, i) => (
                         <motion.div
@@ -106,25 +104,18 @@ export default function ServicesSection() {
                             whileHover={{ y: -6, scale: 1.01 }}
                             className={`group glass-card rounded-2xl p-6 border border-white/8 transition-all duration-400 cursor-default ${service.glow} ${service.border}`}
                         >
-                            {/* Icon */}
                             <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-5 border border-white/10 group-hover:scale-110 transition-transform duration-300 ${colorMap[service.color]}`}>
                                 {service.icon}
                             </div>
-
-                            {/* Content */}
                             <h3 className="font-outfit text-lg font-semibold text-white mb-3 leading-snug">
                                 {service.title}
                             </h3>
                             <p className="text-sm text-slate-400 leading-relaxed mb-4">
                                 {service.description}
                             </p>
-
-                            {/* Tag */}
                             <div className="text-[11px] text-slate-600 font-medium">
                                 {service.tag}
                             </div>
-
-                            {/* Bottom glow line */}
                             <div className={`mt-5 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300 ${colorMap[service.color]}`} />
                         </motion.div>
                     ))}
