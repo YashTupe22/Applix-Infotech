@@ -39,7 +39,7 @@ export default function Navbar() {
                         </svg>
                     </div>
                     <span className="font-outfit font-700 text-xl text-white group-hover:text-electric-light transition-colors">
-                        Applix<span className="text-electric">.</span>
+                        Synplix<span className="text-electric">.</span>
                     </span>
                 </motion.a>
 

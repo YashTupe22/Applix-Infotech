@@ -1,8 +1,12 @@
 'use client'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { PLANS, PLAN_LIMITS } from '../lib/planConfig'
 
-const pricingCategories = [
+// ─── Agency service categories (Webpage Design & Content Creation) ───────────
+
+const agencyCategories = [
     {
         id: 'webpage',
         label: 'Webpage Design',
@@ -79,47 +83,11 @@ const pricingCategories = [
             },
         ],
     },
-    {
-        id: 'webapp',
-        label: 'Web App / SaaS',
-        icon: '🚀',
-        color: 'purple',
-        borderColor: 'border-purple/30',
-        glowColor: 'shadow-glow-purple',
-        badgeColor: 'bg-purple/10 border-purple/30 text-purple',
-        plans: [
-            {
-                name: 'MVP',
-                price: '₹35,000',
-                period: 'one-time',
-                description: 'Launch fast with a focused, fully-functional product.',
-                features: ['Core feature set', 'User authentication', 'Admin dashboard', 'Mobile responsive', 'Basic analytics', '6-week delivery'],
-                popular: false,
-                cta: 'Build My MVP',
-            },
-            {
-                name: 'SaaS',
-                price: '₹75,000',
-                period: 'one-time',
-                description: 'A production-ready SaaS with billing, roles, and scale-ready infra.',
-                features: ['Multi-tenancy', 'Stripe billing', 'Role-based access', 'API + webhooks', 'Custom dashboard', 'Email automation', 'CI/CD deployment', '10-week delivery'],
-                popular: true,
-                cta: 'Most Popular',
-            },
-            {
-                name: 'Enterprise',
-                price: 'Custom',
-                period: 'quote',
-                description: 'Complex systems, enterprise integrations, and dedicated support teams.',
-                features: ['Microservices arch', 'ERP/CRM integrations', 'Custom AI features', 'SLA guarantee', 'Security audit', 'Dedicated team', 'Ongoing retainer'],
-                popular: false,
-                cta: 'Let\'s Talk',
-            },
-        ],
-    },
 ]
 
-function PlanCard({ plan, color, glowColor, isActive }) {
+// ─── Agency plan card ─────────────────────────────────────────────────────────
+
+function AgencyCard({ plan, color }) {
     const glowMap = {
         electric: 'shadow-glow-blue border-electric/50',
         cyan: 'shadow-glow-cyan border-cyan/50',
@@ -138,10 +106,11 @@ function PlanCard({ plan, color, glowColor, isActive }) {
     return (
         <motion.div
             whileHover={{ y: -6 }}
-            className={`relative glass-card rounded-2xl p-7 border flex flex-col h-full transition-all duration-300 ${plan.popular
+            className={`relative glass-card rounded-2xl p-7 border flex flex-col h-full transition-all duration-300 ${
+                plan.popular
                     ? `border-2 ${glowMap[color]} scale-[1.02]`
                     : 'border-white/10 hover:border-white/20'
-                }`}
+            }`}
         >
             {plan.popular && (
                 <div className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white ${btnMap[color]}`}>
@@ -171,12 +140,13 @@ function PlanCard({ plan, color, glowColor, isActive }) {
             </ul>
 
             <motion.a
-                href="mailto:hello@applix.in"
+                href="mailto:hello@synplix.in"
                 whileTap={{ scale: 0.97 }}
-                className={`text-center py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${plan.popular
+                className={`text-center py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                    plan.popular
                         ? `${btnMap[color]} text-white shadow-lg`
                         : 'glass border border-white/15 text-white hover:border-white/30'
-                    }`}
+                }`}
             >
                 {plan.cta} →
             </motion.a>
@@ -184,7 +154,147 @@ function PlanCard({ plan, color, glowColor, isActive }) {
     )
 }
 
+// ─── SaaS subscription helpers ────────────────────────────────────────────────
+
+const SUPPORT_LABELS = {
+    community: 'Community support',
+    email: 'Email support',
+    priority: 'Priority support',
+    csm: 'Dedicated CSM',
+}
+
+function fmtNum(val) {
+    return val === Infinity ? 'Unlimited' : val.toLocaleString('en-IN')
+}
+
+function fmtMonths(val) {
+    return val === Infinity ? 'Unlimited' : `${val} months`
+}
+
+function buildFeatureRows(planId) {
+    const l = PLAN_LIMITS[planId]
+    return [
+        { label: `${fmtNum(l.outlets)} outlet${l.outlets === 1 ? '' : 's'}`, included: true },
+        { label: `${fmtNum(l.staffAccounts)} staff account${l.staffAccounts === 1 ? '' : 's'}`, included: true },
+        { label: `${fmtNum(l.monthlyBills)} bills/month`, included: true },
+        { label: `${fmtNum(l.inventoryItems)} inventory items`, included: true },
+        { label: `${fmtNum(l.menuItems)} menu items`, included: true },
+        { label: 'Offline mode', included: l.offlineMode },
+        { label: 'GST billing', included: l.gstBilling },
+        { label: 'Attendance & payroll', included: l.attendancePayroll },
+        { label: 'PDF / Excel export', included: l.pdfExcelExport },
+        { label: 'Advanced analytics', included: l.advancedAnalytics },
+        { label: 'Multi-outlet dashboard', included: l.multiOutletDashboard },
+        { label: 'Role-based access (RBAC)', included: l.rbac },
+        { label: '2FA security', included: l.twoFA },
+        { label: `${fmtMonths(l.dataRetentionMonths)} data retention`, included: true },
+        { label: SUPPORT_LABELS[l.supportLevel], included: true },
+    ]
+}
+
+const PLAN_CTA = {
+    free: 'Get Started Free',
+    starter: 'Start Free Trial',
+    pro: 'Start Free Trial',
+    enterprise: 'Contact Sales',
+}
+
+const PLAN_HREF = {
+    free: 'mailto:hello@synplix.in?subject=Synplix Free Plan',
+    starter: 'mailto:hello@synplix.in?subject=Synplix Starter Plan',
+    pro: 'mailto:hello@synplix.in?subject=Synplix Pro Plan',
+    enterprise: 'mailto:hello@synplix.in?subject=Synplix Enterprise Plan',
+}
+
+// ─── SaaS subscription plan card ─────────────────────────────────────────────
+
+function SaasCard({ plan, annual }) {
+    const isAnnual = annual && plan.annualPrice !== null
+    const features = buildFeatureRows(plan.id)
+
+    return (
+        <motion.div
+            whileHover={{ y: -6 }}
+            className={`relative glass-card rounded-2xl p-7 border flex flex-col h-full transition-all duration-300 ${
+                plan.highlighted
+                    ? 'border-2 border-purple/60 shadow-glow-purple scale-[1.02]'
+                    : 'border-white/10 hover:border-white/20'
+            }`}
+        >
+            {plan.highlighted && (
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white bg-purple whitespace-nowrap">
+                    ✦ Most Popular
+                </div>
+            )}
+
+            <div className="mb-5">
+                <h3 className="font-outfit text-xl font-bold text-white mb-1">{plan.label}</h3>
+                <p className="text-slate-500 text-sm">{plan.tagline}</p>
+            </div>
+
+            <div className="mb-6">
+                {plan.monthlyPrice === 0 ? (
+                    <>
+                        <span className="font-outfit text-4xl font-bold text-white">Free</span>
+                        <span className="text-slate-500 text-sm ml-2">forever</span>
+                    </>
+                ) : isAnnual ? (
+                    <>
+                        <span className="font-outfit text-4xl font-bold text-white">
+                            ₹{plan.annualPrice.toLocaleString('en-IN')}
+                        </span>
+                        <span className="text-slate-500 text-sm ml-2">/year billed annually</span>
+                    </>
+                ) : (
+                    <>
+                        <span className="font-outfit text-4xl font-bold text-white">
+                            ₹{plan.monthlyPrice.toLocaleString('en-IN')}
+                        </span>
+                        <span className="text-slate-500 text-sm ml-2">/month</span>
+                    </>
+                )}
+            </div>
+
+            <ul className="flex flex-col gap-2.5 mb-8 flex-1">
+                {features.map((feat) => (
+                    <li
+                        key={feat.label}
+                        className={`flex items-start gap-2.5 text-sm ${feat.included ? 'text-slate-300' : 'text-slate-600'}`}
+                    >
+                        {feat.included ? (
+                            <svg className="w-4 h-4 mt-0.5 shrink-0 text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                        ) : (
+                            <svg className="w-4 h-4 mt-0.5 shrink-0 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        )}
+                        {feat.label}
+                    </li>
+                ))}
+            </ul>
+
+            <motion.a
+                href={PLAN_HREF[plan.id]}
+                whileTap={{ scale: 0.97 }}
+                className={`text-center py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                    plan.highlighted
+                        ? 'bg-purple hover:bg-purple/90 text-white shadow-lg'
+                        : 'glass border border-white/15 text-white hover:border-white/30'
+                }`}
+            >
+                {PLAN_CTA[plan.id]} →
+            </motion.a>
+        </motion.div>
+    )
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
+
 export default function PricingPage() {
+    const [annual, setAnnual] = useState(false)
+
     return (
         <main className="min-h-screen bg-navy text-white">
             {/* Header */}
@@ -217,15 +327,14 @@ export default function PricingPage() {
                 </div>
             </section>
 
-            {/* Pricing Categories */}
-            {pricingCategories.map((category, catIdx) => (
+            {/* Agency service categories (Webpage Design, Content Creation) */}
+            {agencyCategories.map((category, catIdx) => (
                 <section
                     key={category.id}
                     id={category.id}
                     className={`relative py-20 ${catIdx % 2 === 0 ? 'bg-charcoal' : 'bg-navy'}`}
                 >
                     <div className="relative z-10 max-w-7xl mx-auto px-6">
-                        {/* Category header */}
                         <motion.div
                             initial={{ opacity: 0, y: 25 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -242,7 +351,6 @@ export default function PricingPage() {
                             </h2>
                         </motion.div>
 
-                        {/* Plans grid */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {category.plans.map((plan, i) => (
                                 <motion.div
@@ -252,11 +360,7 @@ export default function PricingPage() {
                                     viewport={{ once: true, margin: '-20px' }}
                                     transition={{ duration: 0.5, delay: i * 0.1 }}
                                 >
-                                    <PlanCard
-                                        plan={plan}
-                                        color={category.color}
-                                        glowColor={category.glowColor}
-                                    />
+                                    <AgencyCard plan={plan} color={category.color} />
                                 </motion.div>
                             ))}
                         </div>
@@ -264,8 +368,68 @@ export default function PricingPage() {
                 </section>
             ))}
 
+            {/* Synplix SaaS subscription plans */}
+            <section id="saas" className="relative py-20 bg-charcoal">
+                <div className="relative z-10 max-w-7xl mx-auto px-6">
+                    {/* Section header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 25 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-40px' }}
+                        transition={{ duration: 0.55 }}
+                        className="mb-12"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold mb-4 bg-purple/10 border-purple/30 text-purple">
+                            <span>🏪</span>
+                            Synplix SaaS — POS & Billing
+                        </div>
+                        <h2 className="font-outfit text-3xl lg:text-4xl font-bold text-white mb-4">
+                            Synplix Subscription Plans
+                        </h2>
+                        <p className="text-slate-400 max-w-xl">
+                            For café and restaurant owners. Start free, upgrade as you grow.
+                        </p>
+
+                        {/* Billing toggle */}
+                        <div className="inline-flex items-center gap-3 glass-card border border-white/10 rounded-full px-5 py-2.5 mt-6">
+                            <span className={`text-sm font-semibold transition-colors ${!annual ? 'text-white' : 'text-slate-400'}`}>
+                                Monthly
+                            </span>
+                            <button
+                                onClick={() => setAnnual((a) => !a)}
+                                className={`relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none ${annual ? 'bg-purple' : 'bg-white/20'}`}
+                                aria-label="Toggle annual billing"
+                            >
+                                <span className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-transform duration-300 ${annual ? 'translate-x-7' : 'translate-x-1'}`} />
+                            </button>
+                            <span className={`text-sm font-semibold transition-colors ${annual ? 'text-white' : 'text-slate-400'}`}>
+                                Annual
+                                <span className="ml-2 px-2 py-0.5 rounded-full bg-electric/20 text-electric-light text-xs">Save 20%</span>
+                            </span>
+                        </div>
+                    </motion.div>
+
+                    {/* 4 plan cards */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
+                        {PLANS.map((plan, i) => (
+                            <motion.div
+                                key={plan.id}
+                                id={plan.id}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-20px' }}
+                                transition={{ duration: 0.5, delay: i * 0.1 }}
+                                className="h-full"
+                            >
+                                <SaasCard plan={plan} annual={annual} />
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* CTA bottom */}
-            <section className="relative py-20 bg-charcoal overflow-hidden">
+            <section className="relative py-20 bg-navy overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-[500px] h-[300px] rounded-full bg-electric opacity-10 blur-[100px]" />
                 </div>
@@ -275,7 +439,7 @@ export default function PricingPage() {
                     </h2>
                     <p className="text-slate-400 mb-8">Book a free 30-min strategy call and we&apos;ll recommend the best fit for your goals.</p>
                     <motion.a
-                        href="mailto:hello@applix.in?subject=Pricing Enquiry"
+                        href="mailto:hello@synplix.in?subject=Pricing Enquiry"
                         whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(79,70,229,0.5)' }}
                         whileTap={{ scale: 0.97 }}
                         className="inline-flex items-center gap-2 px-10 py-4 rounded-2xl bg-electric text-white font-bold text-lg shadow-glow-blue transition-all duration-300"

@@ -42,7 +42,7 @@ export default function Footer() {
                                 </svg>
                             </div>
                             <span className="font-outfit font-bold text-xl text-white">
-                                Applix<span className="text-electric">.</span>
+                                Synplix<span className="text-electric">.</span>
                             </span>
                         </div>
                         <p className="text-slate-500 text-sm leading-relaxed max-w-xs mb-6">
@@ -85,7 +85,7 @@ export default function Footer() {
                 <div className="section-divider mb-6" />
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
                     <p className="text-slate-600 text-xs">
-                        © {year} Applix Infotech Services. All rights reserved.
+                        © {year} Synplix Infotech Services. All rights reserved.
                     </p>
                     <div className="flex items-center gap-4">
                         <Link href="/privacy-policy" className="text-slate-700 hover:text-slate-500 text-xs transition-colors">Privacy</Link>

@@ -65,7 +65,7 @@ export default function CTASection() {
                     className="flex flex-wrap gap-4 justify-center"
                 >
                     <motion.a
-                        href="mailto:hello@applix.in?subject=Free Strategy Call Request"
+                        href="mailto:synplixinfotechservice@mail.com?subject=Free Strategy Call Request"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.97 }}
                         className="relative group inline-flex items-center gap-2.5 px-10 py-5 rounded-2xl bg-electric font-bold text-lg text-white overflow-hidden transition-all duration-300 animate-pulse-glow"
@@ -79,7 +79,7 @@ export default function CTASection() {
                     </motion.a>
 
                     <motion.a
-                        href="mailto:hello@applix.in"
+                        href="mailto:synplixinfotechservice@mail.com"
                         whileHover={{ scale: 1.04 }}
                         whileTap={{ scale: 0.97 }}
                         className="inline-flex items-center gap-2 px-8 py-5 rounded-2xl glass border border-white/20 font-semibold text-lg text-slate-300 hover:border-electric/50 hover:text-white transition-all duration-300"

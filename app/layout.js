@@ -1,11 +1,11 @@
 import './globals.css'
 
 export const metadata = {
-    title: 'Applix Infotech Services | Custom Web Apps & SaaS Development',
+    title: 'Synplix Infotech Services | Custom Web Apps & SaaS Development',
     description: 'We design, develop, and deploy custom web systems and SaaS platforms for modern businesses. Performance-first architecture, modern UI, and scalable infrastructure.',
     keywords: 'web development, SaaS development, custom web apps, business automation, content creation',
     openGraph: {
-        title: 'Applix Infotech Services | Custom Web Apps & SaaS Development',
+        title: 'Synplix Infotech Services | Custom Web Apps & SaaS Development',
         description: 'Build scalable web apps and SaaS that power business growth.',
         type: 'website',
     },

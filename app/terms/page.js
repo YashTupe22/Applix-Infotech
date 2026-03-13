@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
 export const metadata = {
-    title: 'Terms of Service | Applix Infotech Services',
-    description: 'Read the Terms of Service for Applix Infotech Services — governing use of our website and engagement of our development services.',
+    title: 'Terms of Service | Synplix Infotech Services',
+    description: 'Read the Terms of Service for Synplix Infotech Services — governing use of our website and engagement of our development services.',
 }
 
 const sections = [
@@ -12,7 +12,7 @@ const sections = [
     },
     {
         title: '2. Services Provided',
-        content: `Applix Infotech Services provides custom web application development, SaaS platform development, business automation, and content creation services. The specific scope, deliverables, timeline, and pricing for each project are defined in a separate Statement of Work (SOW) or project agreement signed by both parties.`,
+        content: `Synplix Infotech Services provides custom web application development, SaaS platform development, business automation, and content creation services. The specific scope, deliverables, timeline, and pricing for each project are defined in a separate Statement of Work (SOW) or project agreement signed by both parties.`,
     },
     {
         title: '3. Payment Terms',
@@ -48,7 +48,7 @@ We are not responsible for third-party services, hosting providers, or infrastru
     },
     {
         title: '8. Termination',
-        content: `Either party may terminate a project agreement with 14 days' written notice. In the event of termination, you are liable for payment for all work completed up to the termination date. The deposit is non-refundable unless Applix fails to deliver agreed deliverables.`,
+        content: `Either party may terminate a project agreement with 14 days' written notice. In the event of termination, you are liable for payment for all work completed up to the termination date. The deposit is non-refundable unless Synplix fails to deliver agreed deliverables.`,
     },
     {
         title: '9. Governing Law',
@@ -56,7 +56,7 @@ We are not responsible for third-party services, hosting providers, or infrastru
     },
     {
         title: '10. Contact',
-        content: `For any questions about these Terms, contact us at:\n\nEmail: hello@applix.in\nApplix Infotech Services`,
+        content: `For any questions about these Terms, contact us at:\n\nEmail: hello@synplix.in\nSynplix Infotech Services`,
     },
 ]
 
@@ -88,7 +88,7 @@ export default function TermsPage() {
                 <div className="max-w-3xl mx-auto px-6">
                     <div className="glass-card rounded-3xl border border-white/8 p-8 lg:p-12 flex flex-col gap-10">
                         <p className="text-slate-400 leading-relaxed">
-                            These Terms of Service govern your use of the Applix Infotech Services website and the engagement of our professional services. Please read them carefully.
+                            These Terms of Service govern your use of the Synplix Infotech Services website and the engagement of our professional services. Please read them carefully.
                         </p>
                         {sections.map((section) => (
                             <div key={section.title}>
@@ -99,7 +99,7 @@ export default function TermsPage() {
                     </div>
 
                     <div className="mt-10 text-center">
-                        <p className="text-slate-500 text-sm">Questions? <a href="mailto:hello@applix.in" className="text-electric-light hover:underline">hello@applix.in</a></p>
+                        <p className="text-slate-500 text-sm">Questions? <a href="mailto:hello@synplix.in" className="text-electric-light hover:underline">hello@synplix.in</a></p>
                         <div className="flex justify-center gap-6 mt-4">
                             <Link href="/privacy-policy" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">Privacy Policy</Link>
                             <Link href="/faq" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">FAQ</Link>

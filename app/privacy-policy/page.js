@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
 export const metadata = {
-    title: 'Privacy Policy | Applix Infotech Services',
-    description: 'Read the Applix Infotech Services Privacy Policy to understand how we collect, use, and protect your personal information.',
+    title: 'Privacy Policy | Synplix Infotech Services',
+    description: 'Read the Synplix Infotech Services Privacy Policy to understand how we collect, use, and protect your personal information.',
 }
 
 const sections = [
@@ -47,7 +47,7 @@ We do not sell, rent, or trade your personal information to third parties for ma
 • Object to processing of your data
 • Withdraw consent at any time
 
-To exercise any of these rights, please contact us at hello@applix.in.`,
+To exercise any of these rights, please contact us at hello@synplix.in.`,
     },
     {
         title: '7. Changes to This Policy',
@@ -55,7 +55,7 @@ To exercise any of these rights, please contact us at hello@applix.in.`,
     },
     {
         title: '8. Contact Us',
-        content: `For any questions regarding this Privacy Policy, please reach out to us at:\n\nEmail: hello@applix.in\nApplix Infotech Services`,
+        content: `For any questions regarding this Privacy Policy, please reach out to us at:\n\nEmail: hello@synplix.in\nSynplix Infotech Services`,
     },
 ]
 
@@ -87,7 +87,7 @@ export default function PrivacyPolicyPage() {
                 <div className="max-w-3xl mx-auto px-6">
                     <div className="glass-card rounded-3xl border border-white/8 p-8 lg:p-12 flex flex-col gap-10">
                         <p className="text-slate-400 leading-relaxed">
-                            Applix Infotech Services (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is committed to protecting your privacy. This policy explains how we handle your personal information when you visit our website or engage our services.
+                            Synplix Infotech Services (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is committed to protecting your privacy. This policy explains how we handle your personal information when you visit our website or engage our services.
                         </p>
                         {sections.map((section) => (
                             <div key={section.title}>
@@ -98,7 +98,7 @@ export default function PrivacyPolicyPage() {
                     </div>
 
                     <div className="mt-10 text-center">
-                        <p className="text-slate-500 text-sm">Questions? <a href="mailto:hello@applix.in" className="text-electric-light hover:underline">hello@applix.in</a></p>
+                        <p className="text-slate-500 text-sm">Questions? <a href="mailto:hello@synplix.in" className="text-electric-light hover:underline">hello@synplix.in</a></p>
                         <div className="flex justify-center gap-6 mt-4">
                             <Link href="/terms" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">Terms of Service</Link>
                             <Link href="/faq" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">FAQ</Link>

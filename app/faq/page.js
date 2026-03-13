@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
 export const metadata = {
-    title: 'FAQ | Applix Infotech Services',
-    description: 'Frequently asked questions about Applix web development, SaaS, content creation services, pricing, timelines, and process.',
+    title: 'FAQ | Synplix Infotech Services',
+    description: 'Frequently asked questions about Synplix web development, SaaS, content creation services, pricing, timelines, and process.',
 }
 
 const faqs = [
@@ -11,7 +11,7 @@ const faqs = [
         icon: '💬',
         items: [
             {
-                q: 'What does Applix Infotech Services do?',
+                q: 'What does Synplix Infotech Services do?',
                 a: 'We build custom web applications, SaaS platforms, and business automation tools for modern companies. We also offer content creation services including copywriting, social media, and blog content.',
             },
             {
@@ -51,20 +51,20 @@ const faqs = [
         icon: '💰',
         items: [
             {
-                q: 'How is pricing structured?',
-                a: 'Most projects are quoted as a fixed price based on scope. For ongoing work (content creation, maintenance), we use monthly retainer plans. See our Pricing page for indicative rates.',
+                q: 'How is Synplix pricing structured?',
+                a: 'Synplix offers four subscription plans: Free (forever free), Starter (₹499/month), Pro (₹999/month), and Enterprise (₹1,999/month). Paying annually saves you 20% — equivalent to 2 months free. Prices are shown as ₹X/year billed annually on the pricing page.',
+            },
+            {
+                q: 'Is there a free plan?',
+                a: 'Yes. The Free plan is free forever — no credit card required. It supports 1 outlet, up to 50 bills per month, 15 menu items, and 25 inventory items, with offline mode and GST billing included. Upgrade any time when you need more capacity.',
+            },
+            {
+                q: 'Can I switch plans at any time?',
+                a: 'Yes. You can upgrade or downgrade your plan at any time from your account settings. Upgrades take effect immediately; downgrades apply at the start of your next billing cycle.',
             },
             {
                 q: 'What payment methods do you accept?',
-                a: 'We accept bank transfers (NEFT/RTGS/IMPS), UPI, and international wire transfers. Payment terms are typically 50% upfront and 50% on completion.',
-            },
-            {
-                q: 'Do you offer discounts for startups?',
-                a: 'We evaluate early-stage startups on a case-by-case basis and may offer flexible payment plans or deferred billing for the right opportunities. Contact us to discuss.',
-            },
-            {
-                q: 'Can I request a custom pricing package?',
-                a: 'Absolutely. Every business is different. Book a call and we\'ll put together a custom proposal that fits your exact needs and budget.',
+                a: 'We accept UPI, NEFT/RTGS/IMPS bank transfers, and credit/debit cards. Subscriptions are billed monthly or annually in advance in Indian Rupees (INR).',
             },
         ],
     },
@@ -130,8 +130,8 @@ export default function FAQPage() {
                         Frequently Asked <span className="gradient-text">Questions</span>
                     </h1>
                     <p className="text-slate-400 text-lg">
-                        Everything you need to know about working with Applix. Can&apos;t find your answer?{' '}
-                        <a href="mailto:hello@applix.in" className="text-electric-light hover:underline">Email us.</a>
+                        Everything you need to know about working with Synplix. Can&apos;t find your answer?{' '}
+                        <a href="mailto:hello@synplix.in" className="text-electric-light hover:underline">Email us.</a>
                     </p>
                 </div>
             </section>
@@ -176,13 +176,13 @@ export default function FAQPage() {
                         <h3 className="font-outfit text-2xl font-bold text-white mb-2">Still have questions?</h3>
                         <p className="text-slate-400 text-sm mb-6">Our team typically responds within a few hours during business hours (IST).</p>
                         <a
-                            href="mailto:hello@applix.in"
+                            href="mailto:hello@synplix.in"
                             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-electric text-white font-semibold text-sm shadow-glow-blue hover:shadow-none transition-all duration-300"
                         >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            hello@applix.in
+                            hello@synplix.in
                         </a>
                     </div>
                 </div>

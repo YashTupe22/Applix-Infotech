@@ -20,7 +20,7 @@ function DashboardMockup() {
                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
                     <div className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
                 </div>
-                <div className="text-[10px] text-slate-500">Applix SaaS Dashboard</div>
+                <div className="text-[10px] text-slate-500">Synplix SaaS Dashboard</div>
                 <div className="w-5 h-5 rounded-full bg-electric/30 flex items-center justify-center">
                     <div className="w-2 h-2 rounded-full bg-electric" />
                 </div>

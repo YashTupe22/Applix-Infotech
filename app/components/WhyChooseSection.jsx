@@ -30,7 +30,7 @@ const reasons = [
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
             </svg>
         ),
-        title: 'Scalable Infrastructure',
+        title: 'Future Scalable Infrastructure',
         description: 'Cloud-native deployments that auto-scale from 10 to 10 million users. Kubernetes, Vercel, AWS — we pick what fits your needs.',
         color: 'text-purple',
         bg: 'bg-purple/10 border-purple/20',
@@ -66,7 +66,7 @@ export default function WhyChooseSection() {
                         transition={{ duration: 0.65 }}
                     >
                         <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold text-electric-light border border-electric/30 bg-electric/10 mb-4">
-                            Why Applix
+                            Why Synplix
                         </span>
                         <h2 className="font-outfit text-4xl lg:text-5xl font-bold mb-6 leading-snug">
                             We Build With{' '}

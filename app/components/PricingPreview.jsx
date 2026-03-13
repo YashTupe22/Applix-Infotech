@@ -1,50 +1,27 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { PLANS, PLAN_LIMITS } from '../lib/planConfig'
 
-const highlights = [
-    {
-        category: 'Webpage Design',
-        icon: '🌐',
-        startingAt: '₹8,000',
-        color: 'electric',
-        borderHover: 'hover:border-electric/40',
-        glow: 'hover:shadow-glow-blue',
-        badge: 'bg-electric/10 border-electric/30 text-electric-light',
-        features: ['Mobile Responsive', 'SEO Optimised', 'Fast Delivery'],
-    },
-    {
-        category: 'Content Creation',
-        icon: '✍️',
-        startingAt: '₹5,000/mo',
-        color: 'cyan',
-        borderHover: 'hover:border-cyan/40',
-        glow: 'hover:shadow-glow-cyan',
-        badge: 'bg-cyan/10 border-cyan/30 text-cyan',
-        features: ['Social Media Posts', 'Blog Articles', 'SEO Copywriting'],
-    },
-    {
-        category: 'Web App / SaaS',
-        icon: '🚀',
-        startingAt: '₹35,000',
-        color: 'purple',
-        borderHover: 'hover:border-purple/40',
-        glow: 'hover:shadow-glow-purple',
-        badge: 'bg-purple/10 border-purple/30 text-purple',
-        features: ['Full Stack', 'Stripe Billing', 'Scalable Infra'],
-    },
-]
+const SUPPORT_LABELS = {
+    community: 'Community support',
+    email: 'Email support',
+    priority: 'Priority support',
+    csm: 'Dedicated CSM',
+}
 
-const colorTextMap = {
-    electric: 'text-electric-light',
-    cyan: 'text-cyan',
-    purple: 'text-purple',
+function previewFeatures(planId) {
+    const l = PLAN_LIMITS[planId]
+    const outlets = l.outlets === Infinity ? 'Unlimited outlets' : `${l.outlets} outlet${l.outlets > 1 ? 's' : ''}`
+    const bills = l.monthlyBills === Infinity ? 'Unlimited bills/month' : `${l.monthlyBills} bills/month`
+    return [outlets, bills, SUPPORT_LABELS[l.supportLevel]]
 }
 
 export default function PricingPreview() {
     return (
         <section id="pricing" className="relative py-28 bg-navy overflow-hidden">
-            <div className="absolute inset-0"
+            <div
+                className="absolute inset-0"
                 style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(79,70,229,0.07) 0%, transparent 70%)' }}
             />
 
@@ -61,61 +38,89 @@ export default function PricingPreview() {
                         Pricing
                     </span>
                     <h2 className="font-outfit text-4xl lg:text-5xl font-bold mb-4">
-                        Clear, <span className="gradient-text">Transparent Pricing</span>
+                        Plans for every <span className="gradient-text">café & restaurant</span>
                     </h2>
                     <p className="text-slate-400 text-lg max-w-xl mx-auto">
-                        No hidden costs. Choose a service category below — full pricing details on the pricing page.
+                        Start free, upgrade when you&apos;re ready. All plans include offline mode and GST billing.
                     </p>
                 </motion.div>
 
-                {/* 3 Category Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    {highlights.map((item, i) => (
-                        <motion.div
-                            key={item.category}
-                            initial={{ opacity: 0, y: 35 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-20px' }}
-                            transition={{ duration: 0.55, delay: i * 0.1 }}
-                            whileHover={{ y: -5 }}
-                            className={`glass-card rounded-2xl p-7 border border-white/8 transition-all duration-300 flex flex-col gap-5 ${item.borderHover} ${item.glow}`}
-                        >
-                            {/* Badge */}
-                            <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-semibold w-fit ${item.badge}`}>
-                                <span>{item.icon}</span>
-                                {item.category}
-                            </div>
-
-                            {/* Price */}
-                            <div>
-                                <div className="text-xs text-slate-500 mb-1 uppercase tracking-wide">Starting at</div>
-                                <div className={`font-outfit text-3xl font-bold ${colorTextMap[item.color]}`}>{item.startingAt}</div>
-                            </div>
-
-                            {/* Features */}
-                            <ul className="flex flex-col gap-2">
-                                {item.features.map((f) => (
-                                    <li key={f} className="flex items-center gap-2 text-sm text-slate-400">
-                                        <svg className={`w-3.5 h-3.5 shrink-0 ${colorTextMap[item.color]}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                                        </svg>
-                                        {f}
-                                    </li>
-                                ))}
-                            </ul>
-
-                            {/* Link */}
-                            <Link
-                                href={`/pricing#${item.category.toLowerCase().split(' ')[0] === 'web' && item.category.includes('App') ? 'webapp' : item.category.toLowerCase().split('/')[0].trim().replace('webpage', 'webpage').replace('content', 'content')}`}
-                                className={`mt-auto text-sm font-semibold flex items-center gap-1 ${colorTextMap[item.color]} hover:underline transition-all`}
+                {/* 4 Plan Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+                    {PLANS.map((plan, i) => {
+                        const features = previewFeatures(plan.id)
+                        return (
+                            <motion.div
+                                key={plan.id}
+                                initial={{ opacity: 0, y: 35 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-20px' }}
+                                transition={{ duration: 0.55, delay: i * 0.1 }}
+                                whileHover={{ y: -5 }}
+                                className={`glass-card rounded-2xl p-7 border transition-all duration-300 flex flex-col gap-5 ${
+                                    plan.highlighted
+                                        ? 'border-purple/50 shadow-glow-purple'
+                                        : 'border-white/8 hover:border-white/20'
+                                }`}
                             >
-                                See all plans
-                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </Link>
-                        </motion.div>
-                    ))}
+                                {/* Plan name + popular tag */}
+                                <div>
+                                    <div className="flex items-center justify-between mb-1">
+                                        <span className="font-outfit font-bold text-white text-lg">{plan.label}</span>
+                                        {plan.highlighted && (
+                                            <span className="px-2 py-0.5 rounded-full bg-purple/20 border border-purple/30 text-purple text-xs font-semibold">
+                                                Popular
+                                            </span>
+                                        )}
+                                    </div>
+                                    <p className="text-slate-500 text-xs">{plan.tagline}</p>
+                                </div>
+
+                                {/* Price */}
+                                <div>
+                                    <div className="text-xs text-slate-500 mb-1 uppercase tracking-wide">Starting from</div>
+                                    {plan.monthlyPrice === 0 ? (
+                                        <div className="font-outfit text-3xl font-bold text-electric-light">Free</div>
+                                    ) : (
+                                        <div className={`font-outfit text-3xl font-bold ${plan.highlighted ? 'text-purple' : 'text-white'}`}>
+                                            ₹{plan.monthlyPrice.toLocaleString('en-IN')}
+                                            <span className="text-slate-500 text-sm font-normal ml-1">/mo</span>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Features */}
+                                <ul className="flex flex-col gap-2">
+                                    {features.map((f) => (
+                                        <li key={f} className="flex items-center gap-2 text-sm text-slate-400">
+                                            <svg
+                                                className={`w-3.5 h-3.5 shrink-0 ${plan.highlighted ? 'text-purple' : 'text-electric-light'}`}
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            {f}
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                {/* Link */}
+                                <Link
+                                    href={`/pricing#${plan.id}`}
+                                    className={`mt-auto text-sm font-semibold flex items-center gap-1 hover:underline transition-all ${
+                                        plan.highlighted ? 'text-purple' : 'text-electric-light'
+                                    }`}
+                                >
+                                    See full plan
+                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </Link>
+                            </motion.div>
+                        )
+                    })}
                 </div>
 
                 {/* Full plans CTA */}
