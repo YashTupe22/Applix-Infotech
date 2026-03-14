@@ -397,10 +397,10 @@ export default function PricingPage() {
                             </span>
                             <button
                                 onClick={() => setAnnual((a) => !a)}
-                                className={`relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none ${annual ? 'bg-purple' : 'bg-white/20'}`}
+                                className={`relative w-11 h-6 rounded-full transition-colors duration-300 focus:outline-none overflow-hidden ${annual ? 'bg-purple' : 'bg-white/20'}`}
                                 aria-label="Toggle annual billing"
                             >
-                                <span className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-transform duration-300 ${annual ? 'translate-x-7' : 'translate-x-1'}`} />
+                                <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform duration-300 ${annual ? 'translate-x-5' : 'translate-x-0'}`} />
                             </button>
                             <span className={`text-sm font-semibold transition-colors ${annual ? 'text-white' : 'text-slate-400'}`}>
                                 Annual
