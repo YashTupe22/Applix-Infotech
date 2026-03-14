@@ -131,7 +131,7 @@ export default function FAQPage() {
                     </h1>
                     <p className="text-slate-400 text-lg">
                         Everything you need to know about working with Synplix. Can&apos;t find your answer?{' '}
-                        <a href="mailto:hello@synplix.in" className="text-electric-light hover:underline">Email us.</a>
+                        <a href="mailto:outreach@synplixinfotech.in" className="text-electric-light hover:underline">Email us.</a>
                     </p>
                 </div>
             </section>
@@ -176,13 +176,13 @@ export default function FAQPage() {
                         <h3 className="font-outfit text-2xl font-bold text-white mb-2">Still have questions?</h3>
                         <p className="text-slate-400 text-sm mb-6">Our team typically responds within a few hours during business hours (IST).</p>
                         <a
-                            href="mailto:hello@synplix.in"
+                            href="mailto:outreach@synplixinfotech.in"
                             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-electric text-white font-semibold text-sm shadow-glow-blue hover:shadow-none transition-all duration-300"
                         >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            hello@synplix.in
+                            outreach@synplixinfotech.in
                         </a>
                     </div>
                 </div>

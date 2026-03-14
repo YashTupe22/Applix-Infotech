@@ -47,7 +47,7 @@ We do not sell, rent, or trade your personal information to third parties for ma
 • Object to processing of your data
 • Withdraw consent at any time
 
-To exercise any of these rights, please contact us at hello@synplix.in.`,
+To exercise any of these rights, please contact us at outreach@synplixinfotech.in.`,
     },
     {
         title: '7. Changes to This Policy',
@@ -55,7 +55,7 @@ To exercise any of these rights, please contact us at hello@synplix.in.`,
     },
     {
         title: '8. Contact Us',
-        content: `For any questions regarding this Privacy Policy, please reach out to us at:\n\nEmail: hello@synplix.in\nSynplix Infotech Services`,
+        content: `For any questions regarding this Privacy Policy, please reach out to us at:\n\nEmail: outreach@synplixinfotech.in\nSynplix Infotech Services`,
     },
 ]
 
@@ -98,7 +98,7 @@ export default function PrivacyPolicyPage() {
                     </div>
 
                     <div className="mt-10 text-center">
-                        <p className="text-slate-500 text-sm">Questions? <a href="mailto:hello@synplix.in" className="text-electric-light hover:underline">hello@synplix.in</a></p>
+                        <p className="text-slate-500 text-sm">Questions? <a href="mailto:outreach@synplixinfotech.in" className="text-electric-light hover:underline">outreach@synplixinfotech.in</a></p>
                         <div className="flex justify-center gap-6 mt-4">
                             <Link href="/terms" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">Terms of Service</Link>
                             <Link href="/faq" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">FAQ</Link>

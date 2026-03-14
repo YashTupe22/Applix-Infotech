@@ -56,7 +56,7 @@ We are not responsible for third-party services, hosting providers, or infrastru
     },
     {
         title: '10. Contact',
-        content: `For any questions about these Terms, contact us at:\n\nEmail: hello@synplix.in\nSynplix Infotech Services`,
+        content: `For any questions about these Terms, contact us at:\n\nEmail: outreach@synplixinfotech.in\nSynplix Infotech Services`,
     },
 ]
 
@@ -99,7 +99,7 @@ export default function TermsPage() {
                     </div>
 
                     <div className="mt-10 text-center">
-                        <p className="text-slate-500 text-sm">Questions? <a href="mailto:hello@synplix.in" className="text-electric-light hover:underline">hello@synplix.in</a></p>
+                        <p className="text-slate-500 text-sm">Questions? <a href="mailto:outreach@synplixinfotech.in" className="text-electric-light hover:underline">outreach@synplixinfotech.in</a></p>
                         <div className="flex justify-center gap-6 mt-4">
                             <Link href="/privacy-policy" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">Privacy Policy</Link>
                             <Link href="/faq" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">FAQ</Link>

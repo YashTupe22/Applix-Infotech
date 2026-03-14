@@ -140,7 +140,7 @@ function AgencyCard({ plan, color }) {
             </ul>
 
             <motion.a
-                href="mailto:hello@synplix.in"
+                href="mailto:outreach@synplixinfotech.in"
                 whileTap={{ scale: 0.97 }}
                 className={`text-center py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
                     plan.popular
@@ -200,10 +200,10 @@ const PLAN_CTA = {
 }
 
 const PLAN_HREF = {
-    free: 'mailto:hello@synplix.in?subject=Synplix Free Plan',
-    starter: 'mailto:hello@synplix.in?subject=Synplix Starter Plan',
-    pro: 'mailto:hello@synplix.in?subject=Synplix Pro Plan',
-    enterprise: 'mailto:hello@synplix.in?subject=Synplix Enterprise Plan',
+    free: 'mailto:outreach@synplixinfotech.in?subject=Synplix Free Plan',
+    starter: 'mailto:outreach@synplixinfotech.in?subject=Synplix Starter Plan',
+    pro: 'mailto:outreach@synplixinfotech.in?subject=Synplix Pro Plan',
+    enterprise: 'mailto:outreach@synplixinfotech.in?subject=Synplix Enterprise Plan',
 }
 
 // ─── SaaS subscription plan card ─────────────────────────────────────────────
@@ -439,7 +439,7 @@ export default function PricingPage() {
                     </h2>
                     <p className="text-slate-400 mb-8">Book a free 30-min strategy call and we&apos;ll recommend the best fit for your goals.</p>
                     <motion.a
-                        href="mailto:hello@synplix.in?subject=Pricing Enquiry"
+                        href="mailto:outreach@synplixinfotech.in?subject=Pricing Enquiry"
                         whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(79,70,229,0.5)' }}
                         whileTap={{ scale: 0.97 }}
                         className="inline-flex items-center gap-2 px-10 py-4 rounded-2xl bg-electric text-white font-bold text-lg shadow-glow-blue transition-all duration-300"
