@@ -180,9 +180,7 @@ export default function HeroSection() {
                         className="flex gap-8 mt-12 pt-8 border-t border-white/10"
                     >
                         {[
-                            { value: '30+', label: 'Projects Delivered' },
-                            { value: '100%', label: 'Client Satisfaction' },
-                            { value: '5+', label: 'Years Experience' },
+                            
                         ].map((stat) => (
                             <div key={stat.label}>
                                 <div className="text-2xl font-bold font-outfit gradient-text-blue">{stat.value}</div>

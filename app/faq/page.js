@@ -56,7 +56,7 @@ const faqs = [
             },
             {
                 q: 'Is there a free plan?',
-                a: 'Yes. The Free plan is free forever — no credit card required. It supports 1 outlet, up to 50 bills per month, 15 menu items, and 25 inventory items, with offline mode and GST billing included. Upgrade any time when you need more capacity.',
+                a: 'Yes. The Free plan is free forever — no credit card required. It supports 1 workspace, up to 50 transactions per month, 5 custom workflows, and 25 data records, with offline mode and GST billing included. Upgrade any time when you need more capacity.',
             },
             {
                 q: 'Can I switch plans at any time?',

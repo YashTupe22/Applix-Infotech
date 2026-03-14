@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { PLANS, PLAN_LIMITS } from '../lib/planConfig'
+import { PLANS, PLAN_FEATURES } from '../lib/planConfig'
 
 // ─── Agency service categories (Webpage Design & Content Creation) ───────────
 
@@ -172,19 +172,19 @@ function fmtMonths(val) {
 }
 
 function buildFeatureRows(planId) {
-    const l = PLAN_LIMITS[planId]
+    const l = PLAN_FEATURES[planId]
     return [
-        { label: `${fmtNum(l.outlets)} outlet${l.outlets === 1 ? '' : 's'}`, included: true },
-        { label: `${fmtNum(l.staffAccounts)} staff account${l.staffAccounts === 1 ? '' : 's'}`, included: true },
-        { label: `${fmtNum(l.monthlyBills)} bills/month`, included: true },
-        { label: `${fmtNum(l.inventoryItems)} inventory items`, included: true },
-        { label: `${fmtNum(l.menuItems)} menu items`, included: true },
+        { label: `${fmtNum(l.workspaces)} workspace${l.workspaces === 1 ? '' : 's'}`, included: true },
+        { label: `${fmtNum(l.teamMembers)} team member${l.teamMembers === 1 ? '' : 's'}`, included: true },
+        { label: `${fmtNum(l.monthlyTransactions)} transactions/month`, included: true },
+        { label: `${fmtNum(l.dataRecords)} data records`, included: true },
+        { label: `${fmtNum(l.customWorkflows)} custom workflows`, included: true },
         { label: 'Offline mode', included: l.offlineMode },
         { label: 'GST billing', included: l.gstBilling },
         { label: 'Attendance & payroll', included: l.attendancePayroll },
         { label: 'PDF / Excel export', included: l.pdfExcelExport },
         { label: 'Advanced analytics', included: l.advancedAnalytics },
-        { label: 'Multi-outlet dashboard', included: l.multiOutletDashboard },
+        { label: 'Multi-workspace dashboard', included: l.multiWorkspaceDashboard },
         { label: 'Role-based access (RBAC)', included: l.rbac },
         { label: '2FA security', included: l.twoFA },
         { label: `${fmtMonths(l.dataRetentionMonths)} data retention`, included: true },
@@ -380,14 +380,14 @@ export default function PricingPage() {
                         className="mb-12"
                     >
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold mb-4 bg-purple/10 border-purple/30 text-purple">
-                            <span>🏪</span>
-                            Synplix SaaS — POS & Billing
+                            <span>⚡</span>
+                            Synplix SaaS — Business Platform
                         </div>
                         <h2 className="font-outfit text-3xl lg:text-4xl font-bold text-white mb-4">
                             Synplix Subscription Plans
                         </h2>
                         <p className="text-slate-400 max-w-xl">
-                            For café and restaurant owners. Start free, upgrade as you grow.
+                            For businesses of all sizes. Start free, scale as you grow.
                         </p>
 
                         {/* Billing toggle */}

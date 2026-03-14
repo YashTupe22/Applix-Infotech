@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { PLANS, PLAN_LIMITS } from '../lib/planConfig'
+import { PLANS, PLAN_FEATURES } from '../lib/planConfig'
 
 const SUPPORT_LABELS = {
     community: 'Community support',
@@ -11,10 +11,10 @@ const SUPPORT_LABELS = {
 }
 
 function previewFeatures(planId) {
-    const l = PLAN_LIMITS[planId]
-    const outlets = l.outlets === Infinity ? 'Unlimited outlets' : `${l.outlets} outlet${l.outlets > 1 ? 's' : ''}`
-    const bills = l.monthlyBills === Infinity ? 'Unlimited bills/month' : `${l.monthlyBills} bills/month`
-    return [outlets, bills, SUPPORT_LABELS[l.supportLevel]]
+    const l = PLAN_FEATURES[planId]
+    const workspaces = l.workspaces === Infinity ? 'Unlimited workspaces' : `${l.workspaces} workspace${l.workspaces > 1 ? 's' : ''}`
+    const transactions = l.monthlyTransactions === Infinity ? 'Unlimited transactions/mo' : `${l.monthlyTransactions} transactions/mo`
+    return [workspaces, transactions, SUPPORT_LABELS[l.supportLevel]]
 }
 
 export default function PricingPreview() {
@@ -38,10 +38,10 @@ export default function PricingPreview() {
                         Pricing
                     </span>
                     <h2 className="font-outfit text-4xl lg:text-5xl font-bold mb-4">
-                        Plans for every <span className="gradient-text">café & restaurant</span>
+                        Flexible plans for every <span className="gradient-text">stage of growth</span>
                     </h2>
                     <p className="text-slate-400 text-lg max-w-xl mx-auto">
-                        Start free, upgrade when you&apos;re ready. All plans include offline mode and GST billing.
+                        Start free, upgrade when you&apos;re ready. All plans include GST billing and advanced reporting.
                     </p>
                 </motion.div>
 
