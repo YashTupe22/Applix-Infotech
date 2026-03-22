@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { PLANS, PLAN_FEATURES } from '../lib/planConfig'
 
+const SAAS_URL = 'https://saas.synplixinfotech.in/'
+
 const SUPPORT_LABELS = {
     community: 'Community support',
     email: 'Email support',
@@ -129,7 +131,7 @@ export default function PricingPreview() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="text-center"
+                    className="text-center flex flex-wrap justify-center gap-4"
                 >
                     <Link href="/pricing">
                         <motion.span
@@ -143,6 +145,20 @@ export default function PricingPreview() {
                             </svg>
                         </motion.span>
                     </Link>
+                    <motion.a
+                        href={SAAS_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(168,85,247,0.4)' }}
+                        whileTap={{ scale: 0.97 }}
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-purple text-white font-semibold text-base shadow-glow-purple transition-all duration-300 cursor-pointer"
+                    >
+                        <span>🚀</span>
+                        Try Synplix SaaS
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                    </motion.a>
                 </motion.div>
             </div>
         </section>

@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 export default function Footer() {
     const year = new Date().getFullYear()
+    const SAAS_URL = 'https://saas.synplixinfotech.in/'
 
     const links = {
         Services: [
@@ -12,8 +13,11 @@ export default function Footer() {
             { label: 'Automation', href: '#services' },
             { label: 'Content Creation', href: '#services' },
         ],
+        Products: [
+            { label: 'Synplix SaaS', href: SAAS_URL, external: true },
+        ],
         Company: [
-            { label: 'How We Work', href: '#how-we-work' },
+            { label: 'How We Work', href: '/how-we-work' },
             { label: 'Pricing', href: '/pricing' },
             { label: 'Showcase', href: '#showcase' },
             { label: 'Contact', href: '#contact' },
@@ -30,7 +34,7 @@ export default function Footer() {
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-electric/30 to-transparent" />
 
             <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 mb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-6 gap-10 mb-12">
 
                     {/* Brand */}
                     <div className="lg:col-span-2">
@@ -69,9 +73,23 @@ export default function Footer() {
                             <ul className="flex flex-col gap-2.5">
                                 {items.map((item) => (
                                     <li key={item.label}>
-                                        <Link href={item.href} className="text-slate-500 hover:text-slate-300 text-sm transition-colors duration-200">
-                                            {item.label}
-                                        </Link>
+                                        {item.external ? (
+                                            <a
+                                                href={item.href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-slate-500 hover:text-slate-300 text-sm transition-colors duration-200 inline-flex items-center gap-1"
+                                            >
+                                                {item.label}
+                                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                </svg>
+                                            </a>
+                                        ) : (
+                                            <Link href={item.href} className="text-slate-500 hover:text-slate-300 text-sm transition-colors duration-200">
+                                                {item.label}
+                                            </Link>
+                                        )}
                                     </li>
                                 ))}
                             </ul>

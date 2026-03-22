@@ -3,6 +3,10 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { PLANS, PLAN_FEATURES } from '../lib/planConfig'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+
+const SAAS_URL = 'https://saas.synplixinfotech.in/'
 
 // ─── Agency service categories (Webpage Design & Content Creation) ───────────
 
@@ -200,10 +204,10 @@ const PLAN_CTA = {
 }
 
 const PLAN_HREF = {
-    free: 'mailto:outreach@synplixinfotech.in?subject=Synplix Free Plan',
-    starter: 'mailto:outreach@synplixinfotech.in?subject=Synplix Starter Plan',
-    pro: 'mailto:outreach@synplixinfotech.in?subject=Synplix Pro Plan',
-    enterprise: 'mailto:outreach@synplixinfotech.in?subject=Synplix Enterprise Plan',
+    free: SAAS_URL,
+    starter: SAAS_URL,
+    pro: SAAS_URL,
+    enterprise: SAAS_URL,
 }
 
 // ─── SaaS subscription plan card ─────────────────────────────────────────────
@@ -297,6 +301,7 @@ export default function PricingPage() {
 
     return (
         <main className="min-h-screen bg-navy text-white">
+            <Navbar />
             {/* Header */}
             <section className="relative pt-32 pb-20 overflow-hidden">
                 <div className="blob w-[500px] h-[500px] bg-electric top-[-150px] left-[-100px]" />
@@ -390,6 +395,22 @@ export default function PricingPage() {
                             For businesses of all sizes. Start free, scale as you grow.
                         </p>
 
+                        {/* Try SaaS CTA Button */}
+                        <motion.a
+                            href={SAAS_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(168,85,247,0.5)' }}
+                            whileTap={{ scale: 0.97 }}
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-purple text-white font-semibold text-sm shadow-glow-purple transition-all duration-300 mt-4"
+                        >
+                            <span>🚀</span>
+                            Try Synplix SaaS Now
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </motion.a>
+
                         {/* Billing toggle */}
                         <div className="inline-flex items-center gap-3 glass-card border border-white/10 rounded-full px-5 py-2.5 mt-6">
                             <span className={`text-sm font-semibold transition-colors ${!annual ? 'text-white' : 'text-slate-400'}`}>
@@ -451,6 +472,7 @@ export default function PricingPage() {
                     </motion.a>
                 </div>
             </section>
+            <Footer />
         </main>
     )
 }

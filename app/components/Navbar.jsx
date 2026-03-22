@@ -48,7 +48,7 @@ export default function Navbar() {
                     {navLinks.map((link) => (
                         <Link
                             key={link}
-                            href={link === 'Pricing' ? '/pricing' : `#${link.toLowerCase().replace(' ', '-')}`}
+                            href={link === 'Pricing' ? '/pricing' : link === 'How We Work' ? '/how-we-work' : `#${link.toLowerCase().replace(' ', '-')}`}
                             className="text-slate-400 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
                         >
                             <motion.span whileHover={{ y: -1 }} className="block">
@@ -96,7 +96,7 @@ export default function Navbar() {
                             {navLinks.map((link) => (
                                 <Link
                                     key={link}
-                                    href={link === 'Pricing' ? '/pricing' : `#${link.toLowerCase().replace(' ', '-')}`}
+                                    href={link === 'Pricing' ? '/pricing' : link === 'How We Work' ? '/how-we-work' : `#${link.toLowerCase().replace(' ', '-')}`}
                                     onClick={() => setMenuOpen(false)}
                                     className="text-slate-300 hover:text-white text-sm font-medium py-2 border-b border-white/5 transition-colors"
                                 >

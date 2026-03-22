@@ -1,6 +1,8 @@
 'use client'
 import { motion } from 'framer-motion'
 
+const SAAS_URL = 'https://saas.synplixinfotech.in/'
+
 const services = [
     {
         icon: (
@@ -15,6 +17,7 @@ const services = [
         gradient: 'from-electric/20 to-purple/10',
         border: 'hover:border-electric/40',
         tag: 'React · Next.js · Node.js',
+        link: null,
     },
     {
         icon: (
@@ -29,6 +32,8 @@ const services = [
         gradient: 'from-cyan/20 to-electric/10',
         border: 'hover:border-cyan/40',
         tag: 'Stripe · Auth · Postgres',
+        link: SAAS_URL,
+        linkLabel: 'Try Our SaaS →',
     },
     {
         icon: (
@@ -43,6 +48,7 @@ const services = [
         gradient: 'from-purple/20 to-cyan/10',
         border: 'hover:border-purple/40',
         tag: 'APIs · Webhooks · n8n',
+        link: null,
     },
     {
         icon: (
@@ -58,6 +64,7 @@ const services = [
         gradient: 'from-electric/15 to-cyan/15',
         border: 'hover:border-electric-light/40',
         tag: 'Copywriting · Social · SEO',
+        link: null,
     },
 ]
 
@@ -113,9 +120,23 @@ export default function ServicesSection() {
                             <p className="text-sm text-slate-400 leading-relaxed mb-4">
                                 {service.description}
                             </p>
-                            <div className="text-[11px] text-slate-600 font-medium">
-                                {service.tag}
-                            </div>
+                            {service.link ? (
+                                <a
+                                    href={service.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`inline-flex items-center gap-1 text-xs font-semibold ${colorMap[service.color]} hover:underline transition-all`}
+                                >
+                                    {service.linkLabel}
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            ) : (
+                                <div className="text-[11px] text-slate-600 font-medium">
+                                    {service.tag}
+                                </div>
+                            )}
                             <div className={`mt-5 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300 ${colorMap[service.color]}`} />
                         </motion.div>
                     ))}
