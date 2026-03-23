@@ -30,21 +30,17 @@ export default function Navbar() {
                 {/* Logo */}
                 <motion.a
                     href="#"
-                    whileHover={{ scale: 1.03 }}
-                    className="flex items-center gap-2 group"
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-center group"
                 >
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center">
-                        <Image 
-                            src="/logo.png" 
-                            alt="Synplix Logo" 
-                            width={32} 
-                            height={32}
-                            className="object-contain"
-                        />
-                    </div>
-                    <span className="font-outfit font-700 text-xl text-white group-hover:text-electric-light transition-colors">
-                        Synplix<span className="text-electric">.</span>
-                    </span>
+                    <Image 
+                        src="/logo.png" 
+                        alt="Synplix Infotech" 
+                        width={140} 
+                        height={60}
+                        className="object-contain h-12 w-auto"
+                        priority
+                    />
                 </motion.a>
 
                 {/* Desktop Links */}
