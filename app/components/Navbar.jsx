@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
@@ -32,11 +33,14 @@ export default function Navbar() {
                     whileHover={{ scale: 1.03 }}
                     className="flex items-center gap-2 group"
                 >
-                    <div className="w-8 h-8 rounded-lg bg-electric flex items-center justify-center shadow-glow-blue">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                            <path d="M9 1L16 5V13L9 17L2 13V5L9 1Z" stroke="white" strokeWidth="1.5" fill="rgba(255,255,255,0.15)" />
-                            <path d="M9 1L9 17M2 5L16 13M16 5L2 13" stroke="white" strokeWidth="1" strokeOpacity="0.6" />
-                        </svg>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+                        <Image 
+                            src="/logo.png" 
+                            alt="Synplix Logo" 
+                            width={32} 
+                            height={32}
+                            className="object-contain"
+                        />
                     </div>
                     <span className="font-outfit font-700 text-xl text-white group-hover:text-electric-light transition-colors">
                         Synplix<span className="text-electric">.</span>
