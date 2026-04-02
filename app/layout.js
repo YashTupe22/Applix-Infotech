@@ -60,7 +60,7 @@ export const metadata = {
         },
     },
     verification: {
-        google: 'YOUR_GOOGLE_VERIFICATION_CODE',
+        google: 'O166mjEMsmsbqWYXilnmQQn3KT82naM5CdafSSQtUUM',
     },
     category: 'technology',
     manifest: '/manifest.json',
