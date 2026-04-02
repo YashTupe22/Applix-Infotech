@@ -163,3 +163,123 @@ export function BreadcrumbSchema({ items }) {
         />
     )
 }
+
+export function LocalBusinessSchema() {
+    const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        name: 'Synplix Infotech Services',
+        url: 'https://synplixinfotech.in',
+        logo: 'https://synplixinfotech.in/logo.png',
+        image: 'https://synplixinfotech.in/og-image.png',
+        description: 'Custom web application development, SaaS platform development, and business automation services for modern businesses.',
+        email: 'outreach@synplixinfotech.in',
+        priceRange: '₹₹',
+        address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'IN',
+        },
+        geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '20.5937',
+            longitude: '78.9629',
+        },
+        openingHoursSpecification: {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            opens: '09:00',
+            closes: '18:00',
+        },
+        areaServed: [
+            {
+                '@type': 'Country',
+                name: 'India',
+            },
+            {
+                '@type': 'Country',
+                name: 'United States',
+            },
+            {
+                '@type': 'Country',
+                name: 'United Kingdom',
+            },
+        ],
+        serviceType: [
+            'Web Application Development',
+            'SaaS Development',
+            'Business Automation',
+            'Content Creation',
+            'Website Design',
+        ],
+    }
+
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+    )
+}
+
+export function SoftwareApplicationSchema() {
+    const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: 'Synplix SaaS Platform',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web Browser',
+        url: 'https://saas.synplixinfotech.in',
+        offers: {
+            '@type': 'AggregateOffer',
+            priceCurrency: 'INR',
+            lowPrice: '0',
+            highPrice: '1999',
+            offerCount: '4',
+            offers: [
+                {
+                    '@type': 'Offer',
+                    name: 'Free Plan',
+                    price: '0',
+                    priceCurrency: 'INR',
+                },
+                {
+                    '@type': 'Offer',
+                    name: 'Starter Plan',
+                    price: '499',
+                    priceCurrency: 'INR',
+                },
+                {
+                    '@type': 'Offer',
+                    name: 'Pro Plan',
+                    price: '999',
+                    priceCurrency: 'INR',
+                },
+                {
+                    '@type': 'Offer',
+                    name: 'Enterprise Plan',
+                    price: '1999',
+                    priceCurrency: 'INR',
+                },
+            ],
+        },
+        featureList: [
+            'GST Billing',
+            'Advanced Analytics',
+            'Multi-workspace Support',
+            'Role-based Access Control',
+            'PDF/Excel Export',
+        ],
+        provider: {
+            '@type': 'Organization',
+            name: 'Synplix Infotech Services',
+            url: 'https://synplixinfotech.in',
+        },
+    }
+
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+    )
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Synplix Infotech Services",
+  "short_name": "Synplix",
+  "description": "Custom web application development, SaaS platform development, and business automation services for modern businesses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0F1E",
+  "theme_color": "#4F46E5",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": [
+    "business",
+    "productivity",
+    "developer tools"
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}
