@@ -30,6 +30,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# currency system cache
+/tmp/
+exchange-rates-cache.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

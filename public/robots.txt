@@ -1,0 +1,9 @@
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Disallow private routes
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://synplixinfotech.in/sitemap.xml

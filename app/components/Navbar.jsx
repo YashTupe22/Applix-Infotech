@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import CurrencySelector from './CurrencySelector'
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
@@ -61,6 +62,7 @@ export default function Navbar() {
 
                 {/* CTA */}
                 <div className="hidden md:flex items-center gap-4">
+                    <CurrencySelector />
                     <motion.a
                         href="#contact"
                         whileHover={{ scale: 1.05 }}
@@ -103,6 +105,10 @@ export default function Navbar() {
                                     {link}
                                 </Link>
                             ))}
+                            <div className="py-2 border-b border-white/5">
+                                <div className="text-slate-400 text-xs mb-2">Currency</div>
+                                <CurrencySelector />
+                            </div>
                             <a
                                 href="#contact"
                                 onClick={() => setMenuOpen(false)}

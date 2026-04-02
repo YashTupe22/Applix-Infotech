@@ -3,6 +3,26 @@ import Link from 'next/link'
 export const metadata = {
     title: 'Terms of Service | Synplix Infotech Services',
     description: 'Read the Terms of Service for Synplix Infotech Services — governing use of our website and engagement of our development services.',
+    metadataBase: new URL('https://synplixinfotech.in'),
+    alternates: {
+        canonical: '/terms',
+    },
+    openGraph: {
+        title: 'Terms of Service | Synplix Infotech Services',
+        description: 'Terms of Service governing the use of Synplix website and engagement of development services.',
+        type: 'website',
+        url: 'https://synplixinfotech.in/terms',
+        siteName: 'Synplix Infotech Services',
+    },
+    twitter: {
+        card: 'summary',
+        title: 'Terms of Service | Synplix Infotech Services',
+        description: 'Terms governing the use of our website and services.',
+    },
+    robots: {
+        index: true,
+        follow: true,
+    },
 }
 
 const sections = [

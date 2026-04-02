@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { BreadcrumbSchema } from '../components/StructuredData'
 
 const steps = [
     {
@@ -146,8 +147,14 @@ const colorMap = {
 }
 
 export default function HowWeWorkPage() {
+    const breadcrumbs = [
+        { name: 'Home', url: '/' },
+        { name: 'How We Work', url: '/how-we-work' },
+    ]
+
     return (
         <main className="min-h-screen bg-navy text-white">
+            <BreadcrumbSchema items={breadcrumbs} />
             <Navbar />
 
             {/* Hero Section */}

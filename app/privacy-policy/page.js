@@ -3,6 +3,26 @@ import Link from 'next/link'
 export const metadata = {
     title: 'Privacy Policy | Synplix Infotech Services',
     description: 'Read the Synplix Infotech Services Privacy Policy to understand how we collect, use, and protect your personal information.',
+    metadataBase: new URL('https://synplixinfotech.in'),
+    alternates: {
+        canonical: '/privacy-policy',
+    },
+    openGraph: {
+        title: 'Privacy Policy | Synplix Infotech Services',
+        description: 'Learn how Synplix collects, uses, and protects your personal information.',
+        type: 'website',
+        url: 'https://synplixinfotech.in/privacy-policy',
+        siteName: 'Synplix Infotech Services',
+    },
+    twitter: {
+        card: 'summary',
+        title: 'Privacy Policy | Synplix Infotech Services',
+        description: 'Our Privacy Policy explains how we handle your personal information.',
+    },
+    robots: {
+        index: true,
+        follow: true,
+    },
 }
 
 const sections = [

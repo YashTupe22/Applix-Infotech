@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { PLANS, PLAN_FEATURES } from '../lib/planConfig'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { BreadcrumbSchema } from '../components/StructuredData'
+import PriceDisplay from '../components/PriceDisplay'
 
 const SAAS_URL = 'https://saas.synplixinfotech.in/'
 
@@ -22,7 +24,7 @@ const agencyCategories = [
         plans: [
             {
                 name: 'Starter',
-                price: '₹8,000',
+                price: 8000,
                 period: 'one-time',
                 description: 'Perfect for small businesses needing a clean, professional online presence.',
                 features: ['Up to 5 pages', 'Mobile responsive', 'Contact form', 'Basic SEO setup', '1 round of revisions', '2-week delivery'],
@@ -31,7 +33,7 @@ const agencyCategories = [
             },
             {
                 name: 'Growth',
-                price: '₹18,000',
+                price: 18000,
                 period: 'one-time',
                 description: 'For businesses that want a premium website that converts visitors to clients.',
                 features: ['Up to 15 pages', 'Custom animations', 'CMS integration', 'Advanced SEO', 'Google Analytics setup', '3 rounds of revisions', '4-week delivery', 'Performance optimized'],
@@ -40,7 +42,7 @@ const agencyCategories = [
             },
             {
                 name: 'Enterprise',
-                price: 'Custom',
+                price: null,
                 period: 'quote',
                 description: 'Large-scale web presence with advanced features, integrations, and ongoing support.',
                 features: ['Unlimited pages', 'Custom portals', 'API integrations', 'Multi-language', 'Priority support', 'Unlimited revisions', 'Dedicated PM'],
@@ -128,8 +130,21 @@ function AgencyCard({ plan, color }) {
             </div>
 
             <div className="mb-6">
-                <span className="font-outfit text-4xl font-bold text-white">{plan.price}</span>
-                <span className="text-slate-500 text-sm ml-1">{plan.period}</span>
+                {plan.price === null ? (
+                    <>
+                        <span className="font-outfit text-4xl font-bold text-white">Custom</span>
+                        <span className="text-slate-500 text-sm ml-1">{plan.period}</span>
+                    </>
+                ) : (
+                    <>
+                        <span className="font-outfit text-4xl font-bold text-white">
+                            <PriceDisplay amount={plan.price} period={plan.period === 'one-time' ? '' : plan.period} />
+                        </span>
+                        {plan.period === 'one-time' && (
+                            <span className="text-slate-500 text-sm ml-1">one-time</span>
+                        )}
+                    </>
+                )}
             </div>
 
             <ul className="flex flex-col gap-2.5 mb-8 flex-1">
@@ -245,16 +260,15 @@ function SaasCard({ plan, annual }) {
                 ) : isAnnual ? (
                     <>
                         <span className="font-outfit text-4xl font-bold text-white">
-                            ₹{plan.annualPrice.toLocaleString('en-IN')}
+                            <PriceDisplay amount={plan.annualPrice} period="/year" />
                         </span>
-                        <span className="text-slate-500 text-sm ml-2">/year billed annually</span>
+                        <span className="text-slate-500 text-sm ml-2">billed annually</span>
                     </>
                 ) : (
                     <>
                         <span className="font-outfit text-4xl font-bold text-white">
-                            ₹{plan.monthlyPrice.toLocaleString('en-IN')}
+                            <PriceDisplay amount={plan.monthlyPrice} period="/month" />
                         </span>
-                        <span className="text-slate-500 text-sm ml-2">/month</span>
                     </>
                 )}
             </div>
@@ -299,8 +313,14 @@ function SaasCard({ plan, annual }) {
 export default function PricingPage() {
     const [annual, setAnnual] = useState(false)
 
+    const breadcrumbs = [
+        { name: 'Home', url: '/' },
+        { name: 'Pricing', url: '/pricing' },
+    ]
+
     return (
         <main className="min-h-screen bg-navy text-white">
+            <BreadcrumbSchema items={breadcrumbs} />
             <Navbar />
             {/* Header */}
             <section className="relative pt-32 pb-20 overflow-hidden">

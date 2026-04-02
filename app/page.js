@@ -7,10 +7,14 @@ import WhyChooseSection from './components/WhyChooseSection'
 import PricingPreview from './components/PricingPreview'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
+import { OrganizationSchema, WebSiteSchema, ServiceSchema } from './components/StructuredData'
 
 export default function Home() {
     return (
         <main>
+            <OrganizationSchema />
+            <WebSiteSchema />
+            <ServiceSchema />
             <Navbar />
             <HeroSection />
             <div className="section-divider" />

@@ -1,8 +1,25 @@
 import Link from 'next/link'
+import { FAQPageSchema, BreadcrumbSchema } from '../components/StructuredData'
 
 export const metadata = {
     title: 'FAQ | Synplix Infotech Services',
     description: 'Frequently asked questions about Synplix web development, SaaS, content creation services, pricing, timelines, and process.',
+    metadataBase: new URL('https://synplixinfotech.in'),
+    alternates: {
+        canonical: '/faq',
+    },
+    openGraph: {
+        title: 'FAQ | Synplix Infotech Services',
+        description: 'Everything you need to know about working with Synplix. Pricing, process, timelines, and technical questions answered.',
+        type: 'website',
+        url: 'https://synplixinfotech.in/faq',
+        siteName: 'Synplix Infotech Services',
+    },
+    twitter: {
+        card: 'summary',
+        title: 'FAQ | Synplix Infotech Services',
+        description: 'Frequently asked questions about our web development, SaaS, and content creation services.',
+    },
 }
 
 const faqs = [
@@ -111,8 +128,15 @@ const faqs = [
 ]
 
 export default function FAQPage() {
+    const breadcrumbs = [
+        { name: 'Home', url: '/' },
+        { name: 'FAQ', url: '/faq' },
+    ]
+
     return (
         <main className="min-h-screen bg-navy text-white">
+            <FAQPageSchema faqs={faqs} />
+            <BreadcrumbSchema items={breadcrumbs} />
             {/* Header */}
             <section className="relative pt-32 pb-16 overflow-hidden">
                 <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(6,182,212,0.08) 0%, transparent 60%)' }} />

@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { PLANS, PLAN_FEATURES } from '../lib/planConfig'
+import PriceDisplay from './PriceDisplay'
 
 const SAAS_URL = 'https://saas.synplixinfotech.in/'
 
@@ -85,8 +86,7 @@ export default function PricingPreview() {
                                         <div className="font-outfit text-3xl font-bold text-electric-light">Free</div>
                                     ) : (
                                         <div className={`font-outfit text-3xl font-bold ${plan.highlighted ? 'text-purple' : 'text-white'}`}>
-                                            ₹{plan.monthlyPrice.toLocaleString('en-IN')}
-                                            <span className="text-slate-500 text-sm font-normal ml-1">/mo</span>
+                                            <PriceDisplay amount={plan.monthlyPrice} period="/mo" />
                                         </div>
                                     )}
                                 </div>
