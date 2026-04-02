@@ -8,10 +8,10 @@ export default function Footer() {
 
     const links = {
         Services: [
-            { label: 'Web Apps', href: '#services' },
-            { label: 'SaaS Development', href: '#services' },
-            { label: 'Automation', href: '#services' },
-            { label: 'Content Creation', href: '#services' },
+            { label: 'Web Apps', href: '/#services' },
+            { label: 'SaaS Development', href: '/#services' },
+            { label: 'Automation', href: '/#services' },
+            { label: 'Content Creation', href: '/#services' },
         ],
         Products: [
             { label: 'Synplix SaaS', href: SAAS_URL, external: true },
@@ -19,8 +19,8 @@ export default function Footer() {
         Company: [
             { label: 'How We Work', href: '/how-we-work' },
             { label: 'Pricing', href: '/pricing' },
-            { label: 'Showcase', href: '#showcase' },
-            { label: 'Contact', href: '#contact' },
+            { label: 'Showcase', href: '/#showcase' },
+            { label: 'Contact', href: '/#contact' },
         ],
         Legal: [
             { label: 'Privacy Policy', href: '/privacy-policy' },

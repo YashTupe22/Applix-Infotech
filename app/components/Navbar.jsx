@@ -29,27 +29,32 @@ export default function Navbar() {
         >
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                 {/* Logo */}
-                <motion.a
-                    href="#"
-                    whileHover={{ scale: 1.02 }}
-                    className="flex items-center group"
-                >
-                    <Image 
-                        src="/logo.png" 
-                        alt="Synplix Infotech" 
-                        width={140} 
-                        height={60}
-                        className="object-contain h-12 w-auto"
-                        priority
-                    />
-                </motion.a>
+                <Link href="/">
+                    <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        className="flex items-center group cursor-pointer"
+                    >
+                        <Image 
+                            src="/logo.png" 
+                            alt="Synplix Infotech" 
+                            width={140} 
+                            height={60}
+                            className="object-contain h-12 w-auto"
+                            priority
+                        />
+                    </motion.div>
+                </Link>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-8">
                     {navLinks.map((link) => (
                         <Link
                             key={link}
-                            href={link === 'Pricing' ? '/pricing' : link === 'How We Work' ? '/how-we-work' : `#${link.toLowerCase().replace(' ', '-')}`}
+                            href={
+                                link === 'Pricing' ? '/pricing' : 
+                                link === 'How We Work' ? '/how-we-work' : 
+                                `/#${link.toLowerCase().replace(' ', '-')}`
+                            }
                             className="text-slate-400 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
                         >
                             <motion.span whileHover={{ y: -1 }} className="block">
@@ -64,7 +69,7 @@ export default function Navbar() {
                 <div className="hidden md:flex items-center gap-4">
                     <CurrencySelector />
                     <motion.a
-                        href="#contact"
+                        href="/#contact"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.98 }}
                         className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white border border-electric/50 hover:border-electric hover:bg-electric/10 hover:shadow-glow-blue transition-all duration-300"
@@ -98,7 +103,11 @@ export default function Navbar() {
                             {navLinks.map((link) => (
                                 <Link
                                     key={link}
-                                    href={link === 'Pricing' ? '/pricing' : link === 'How We Work' ? '/how-we-work' : `#${link.toLowerCase().replace(' ', '-')}`}
+                                    href={
+                                        link === 'Pricing' ? '/pricing' : 
+                                        link === 'How We Work' ? '/how-we-work' : 
+                                        `/#${link.toLowerCase().replace(' ', '-')}`
+                                    }
                                     onClick={() => setMenuOpen(false)}
                                     className="text-slate-300 hover:text-white text-sm font-medium py-2 border-b border-white/5 transition-colors"
                                 >
@@ -110,7 +119,7 @@ export default function Navbar() {
                                 <CurrencySelector />
                             </div>
                             <a
-                                href="#contact"
+                                href="/#contact"
                                 onClick={() => setMenuOpen(false)}
                                 className="px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-electric/20 border border-electric/50 text-center"
                             >

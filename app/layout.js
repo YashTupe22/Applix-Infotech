@@ -60,27 +60,19 @@ export default function RootLayout({ children }) {
                     href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
                     rel="stylesheet"
                 />
-                {/* Google Tag Manager */}
+                {/* Google Analytics */}
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-FY3L58TSWT" />
                 <script dangerouslySetInnerHTML={{
-                    __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-59D46R9Z');`
+                    __html: `
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-FY3L58TSWT');
+                    `
                 }} />
-                {/* End Google Tag Manager */}
+                {/* End Google Analytics */}
             </head>
             <body className="bg-navy text-white antialiased">
-                {/* Google Tag Manager (noscript) */}
-                <noscript>
-                    <iframe 
-                        src="https://www.googletagmanager.com/ns.html?id=GTM-59D46R9Z"
-                        height="0" 
-                        width="0" 
-                        style={{ display: 'none', visibility: 'hidden' }}
-                    />
-                </noscript>
-                {/* End Google Tag Manager (noscript) */}
                 <CurrencyProvider>
                     {children}
                 </CurrencyProvider>
