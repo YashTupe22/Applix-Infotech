@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- Synplix Infotech Services - Sitemap -->
+
+<!-- Homepage - Highest priority -->
+<url>
+  <loc>https://synplixinfotech.in/</loc>
+  <lastmod>2026-04-06T17:54:44+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>1.00</priority>
+</url>
+
+<!-- Main service pages - High priority -->
+<url>
+  <loc>https://synplixinfotech.in/pricing</loc>
+  <lastmod>2026-04-06T17:54:44+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.90</priority>
+</url>
+
+<!-- About/Process pages - Medium-high priority -->
+<url>
+  <loc>https://synplixinfotech.in/how-we-work</loc>
+  <lastmod>2026-04-06T17:54:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+
+<!-- Support pages - Medium priority -->
+<url>
+  <loc>https://synplixinfotech.in/faq</loc>
+  <lastmod>2026-04-06T17:54:44+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.70</priority>
+</url>
+
+<!-- Legal pages - Low priority -->
+<url>
+  <loc>https://synplixinfotech.in/terms</loc>
+  <lastmod>2026-04-06T17:54:44+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.30</priority>
+</url>
+<url>
+  <loc>https://synplixinfotech.in/privacy-policy</loc>
+  <lastmod>2026-04-06T17:54:44+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.30</priority>
+</url>
+
+</urlset>
