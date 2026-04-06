@@ -3,14 +3,14 @@ import { CurrencyProvider } from './context/CurrencyContext'
 
 export const metadata = {
     title: {
-        default: 'Synplix Infotech Services | Custom Web Apps & SaaS Development',
-        template: '%s | Synplix Infotech Services',
+        default: 'SaaS Development Company in India | Synplix Infotech',
+        template: '%s | Synplix Infotech',
     },
-    description: 'We design, develop, and deploy custom web systems and SaaS platforms for modern businesses. Performance-first architecture, modern UI, and scalable infrastructure.',
-    keywords: ['web development', 'SaaS development', 'custom web apps', 'business automation', 'content creation', 'web application development', 'software development India', 'custom software', 'Next.js development', 'React development'],
-    authors: [{ name: 'Synplix Infotech Services', url: 'https://synplixinfotech.in' }],
-    creator: 'Synplix Infotech Services',
-    publisher: 'Synplix Infotech Services',
+    description: 'Leading SaaS development company in India. We build scalable web apps, MVPs, and custom SaaS solutions for startups. Book a free consultation today.',
+    keywords: ['SaaS development company in India', 'custom web app development', 'MVP development services', 'SaaS developers India', 'startup software development', 'web development', 'SaaS development', 'business automation', 'Next.js development', 'React development'],
+    authors: [{ name: 'Synplix Infotech', url: 'https://synplixinfotech.in' }],
+    creator: 'Synplix Infotech',
+    publisher: 'Synplix Infotech',
     formatDetection: {
         email: false,
         address: false,
@@ -20,31 +20,32 @@ export const metadata = {
     alternates: {
         canonical: '/',
         languages: {
-            'en-US': '/',
+            'en-IN': '/',
         },
     },
     openGraph: {
-        title: 'Synplix Infotech Services | Custom Web Apps & SaaS Development',
-        description: 'Build scalable web apps and SaaS that power business growth. Performance-first architecture, modern UI, and scalable infrastructure.',
+        title: 'SaaS Development Company in India | Synplix Infotech',
+        description: 'Leading SaaS development company in India. We build scalable web apps, MVPs, and custom SaaS solutions for startups. Book a free consultation today.',
         type: 'website',
-        url: 'https://synplixinfotech.in',
-        siteName: 'Synplix Infotech Services',
-        locale: 'en_US',
+        url: 'https://synplixinfotech.in/',
+        siteName: 'Synplix Infotech',
+        locale: 'en_IN',
         images: [
             {
-                url: '/og-image.png',
+                url: '/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'Synplix Infotech Services - Custom Web Apps & SaaS Development',
+                alt: 'Synplix Infotech - SaaS Development Company in India',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Synplix Infotech Services | Custom Web Apps & SaaS Development',
-        description: 'Build scalable web apps and SaaS that power business growth.',
-        images: ['/og-image.png'],
-        creator: '@synplixinfotech',
+        title: 'SaaS Development Company in India | Synplix Infotech',
+        description: 'Leading SaaS development company in India. We build scalable web apps, MVPs, and custom SaaS solutions for startups. Book a free consultation today.',
+        images: ['/og-image.jpg'],
+        creator: '@synplix',
+        site: '@synplix',
     },
     robots: {
         index: true,
@@ -72,7 +73,7 @@ export default function RootLayout({ children }) {
             <head>
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta name="theme-color" content="#4F46E5" />
+                <meta name="theme-color" content="#0f172a" />
                 <meta name="msapplication-TileColor" content="#0A0F1E" />
                 <meta name="format-detection" content="telephone=no" />
                 <link rel="icon" type="image/png" href="/favicon.png" />
@@ -95,6 +96,21 @@ export default function RootLayout({ children }) {
                     `
                 }} />
                 {/* End Google Analytics */}
+                
+                {/* Organization Schema - Structured Data */}
+                <script type="application/ld+json" dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Synplix Infotech",
+                        "url": "https://synplixinfotech.in",
+                        "logo": "https://synplixinfotech.in/logo.png",
+                        "description": "Synplix Infotech is a leading SaaS development company in India, specializing in custom web app development, MVP development, and scalable software solutions for startups and SaaS businesses.",
+                        "sameAs": [
+                            "https://linkedin.com/company/synplix"
+                        ]
+                    })
+                }} />
             </head>
             <body className="bg-navy text-white antialiased">
                 <CurrencyProvider>
