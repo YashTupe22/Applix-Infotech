@@ -1,6 +1,14 @@
 import './globals.css'
+import Script from 'next/script'
+import { Inter } from 'next/font/google'
 import { CurrencyProvider } from './context/CurrencyContext'
 import { ThemeProvider } from './context/ThemeContext'
+
+const inter = Inter({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-inter',
+})
 
 export const metadata = {
     title: {
@@ -80,23 +88,6 @@ export default function RootLayout({ children }) {
                 <link rel="icon" type="image/png" href="/favicon.png" />
                 <link rel="apple-touch-icon" href="/favicon.png" />
                 <link rel="manifest" href="/manifest.json" />
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-                    rel="stylesheet"
-                />
-                {/* Google Analytics */}
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-FY3L58TSWT" />
-                <script dangerouslySetInnerHTML={{
-                    __html: `
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', 'G-FY3L58TSWT');
-                    `
-                }} />
-                {/* End Google Analytics */}
                 
                 {/* Organization Schema - Structured Data */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{
@@ -113,7 +104,16 @@ export default function RootLayout({ children }) {
                     })
                 }} />
             </head>
-            <body className="bg-navy text-white antialiased">
+            <body className={`${inter.variable} bg-navy text-white antialiased`}>
+                <Script src="https://www.googletagmanager.com/gtag/js?id=G-FY3L58TSWT" strategy="afterInteractive" />
+                <Script id="google-analytics" strategy="afterInteractive">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-FY3L58TSWT');
+                    `}
+                </Script>
                 <ThemeProvider>
                     <CurrencyProvider>
                         {children}

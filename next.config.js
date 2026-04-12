@@ -41,6 +41,19 @@ const nextConfig = {
                         key: 'Permissions-Policy',
                         value: 'camera=(), microphone=(), geolocation=()',
                     },
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, max-age=0, s-maxage=31536000, stale-while-revalidate=60',
+                    },
+                ],
+            },
+            {
+                source: '/:all*(svg|jpg|jpeg|png|webp|avif|ico|css|js|woff|woff2)',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, max-age=31536000, immutable',
+                    },
                 ],
             },
         ]
