@@ -9,6 +9,7 @@ export default function PriceDisplay({
   amount, 
   period = null, 
   showOriginal = false,
+  allowWrap = false,
   className = '' 
 }) {
   const { currency, exchangeRates, loading } = useCurrency();
@@ -18,7 +19,7 @@ export default function PriceDisplay({
     return (
       <span className={className}>
         {showOriginal ? `₹${amount.toLocaleString()}${period || ''}` : (
-          <span className="inline-block bg-electric/20 animate-pulse rounded">
+          <span className="inline-block bg-white/10 animate-pulse rounded">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         )}
@@ -33,10 +34,12 @@ export default function PriceDisplay({
   const locale = getLocaleForCurrency(currency);
   const formattedPrice = formatPrice(convertedAmount, currency, locale);
 
+  const wrapClass = allowWrap ? 'whitespace-normal break-words' : 'whitespace-nowrap';
+
   return (
-    <span className={className}>
+    <span className={`tabular-nums ${wrapClass} ${className}`}>
       {formattedPrice}
-      {period && <span>{period}</span>}
+      {period && <span className="text-[0.8em] ml-0.5">{period}</span>}
     </span>
   );
 }
@@ -54,9 +57,9 @@ export function PriceDisplayCompact({ amount, period = null, className = '' }) {
   const formattedPrice = formatPrice(convertedAmount, currency, locale);
 
   return (
-    <span className={className}>
+    <span className={`tabular-nums whitespace-nowrap ${className}`}>
       {formattedPrice}
-      {period}
+      {period && <span className="text-[0.8em] ml-0.5">{period}</span>}
     </span>
   );
 }
@@ -82,7 +85,7 @@ export function PriceDisplayWithOriginal({ amount, period = null, className = ''
 
   return (
     <div className={className}>
-      <div className="text-2xl font-bold">
+      <div className="text-2xl font-bold tabular-nums whitespace-nowrap">
         {formattedPrice}
         {period}
       </div>

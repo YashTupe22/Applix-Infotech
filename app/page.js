@@ -19,15 +19,10 @@ export default function Home() {
             <SoftwareApplicationSchema />
             <Navbar />
             <HeroSection />
-            <div className="section-divider" />
             <ServicesSection />
-            <div className="section-divider" />
             <HowWeWorkSection />
-            <div className="section-divider" />
             <ShowcaseSection />
-            <div className="section-divider" />
             <WhyChooseSection />
-            <div className="section-divider" />
             <PricingPreview />
             <CTASection />
             <Footer />

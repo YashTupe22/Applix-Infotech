@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { FAQPageSchema, BreadcrumbSchema } from '../components/StructuredData'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export const metadata = {
     title: 'FAQ | Synplix Infotech Services',
@@ -137,57 +139,45 @@ export default function FAQPage() {
         <main className="min-h-screen bg-navy text-white">
             <FAQPageSchema faqs={faqs} />
             <BreadcrumbSchema items={breadcrumbs} />
-            {/* Header */}
-            <section className="relative pt-32 pb-16 overflow-hidden">
-                <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(6,182,212,0.08) 0%, transparent 60%)' }} />
-                <div className="relative z-10 max-w-3xl mx-auto px-6">
-                    <Link href="/" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white mb-8 transition-colors">
+            <Navbar />
+
+            <section className="pt-36 pb-14">
+                <div className="max-w-3xl mx-auto px-6">
+                    <Link href="/" className="flex w-fit items-center gap-2 text-[13px] text-[#8a8f98] hover:text-[#d0d6e0] mb-8 transition-colors">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                         Back to Home
                     </Link>
-                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold text-cyan border border-cyan/30 bg-cyan/10 mb-5">
-                        Help Center
+                    <span className="block w-fit px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-[12px] text-[#d0d6e0] mb-5">
+                        Help center
                     </span>
-                    <h1 className="font-outfit text-4xl lg:text-5xl font-bold mb-4">
-                        Frequently Asked <span className="gradient-text">Questions</span>
-                    </h1>
-                    <p className="text-slate-400 text-lg">
-                        Everything you need to know about working with Synplix. Can&apos;t find your answer?{' '}
-                        <a href="mailto:outreach@synplixinfotech.in" className="text-electric-light hover:underline">Email us.</a>
+                    <h1 className="text-5xl tracking-[-0.04em] font-medium text-[#f7f8f8] mb-4">Frequently asked questions</h1>
+                    <p className="text-[17px] text-[#8a8f98]">
+                        Everything you need to know about working with Synplix. Need help fast?{' '}
+                        <a href="mailto:outreach@synplixinfotech.in" className="text-[#7170ff] hover:text-[#828fff] transition-colors">Email us</a>.
                     </p>
                 </div>
             </section>
 
-            {/* FAQ Categories */}
             <section className="pb-24">
                 <div className="max-w-3xl mx-auto px-6 flex flex-col gap-12">
                     {faqs.map((category) => (
                         <div key={category.category}>
-                            {/* Category label */}
-                            <div className="flex items-center gap-3 mb-6">
-                                <span className="text-2xl">{category.icon}</span>
-                                <h2 className="font-outfit text-xl font-bold text-white">{category.category}</h2>
-                            </div>
-
-                            {/* Q&A items */}
+                            <h2 className="text-2xl tracking-[-0.02em] font-medium text-[#f7f8f8] mb-6">{category.category}</h2>
                             <div className="flex flex-col gap-3">
                                 {category.items.map((item, i) => (
-                                    <details
-                                        key={i}
-                                        className="group glass-card rounded-2xl border border-white/8 hover:border-electric/25 transition-all duration-300 overflow-hidden"
-                                    >
+                                    <details key={i} className="group glass-card rounded-xl overflow-hidden">
                                         <summary className="flex items-center justify-between px-6 py-5 cursor-pointer list-none select-none">
-                                            <span className="font-outfit font-semibold text-white text-base pr-4">{item.q}</span>
-                                            <span className="shrink-0 w-6 h-6 rounded-full bg-electric/10 border border-electric/30 flex items-center justify-center text-electric-light transition-transform duration-300 group-open:rotate-45">
+                                            <span className="text-[16px] font-medium text-[#f7f8f8] pr-4">{item.q}</span>
+                                            <span className="shrink-0 w-6 h-6 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-[#d0d6e0] transition-transform duration-300 group-open:rotate-45">
                                                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
                                                 </svg>
                                             </span>
                                         </summary>
                                         <div className="px-6 pb-5">
-                                            <p className="text-slate-400 text-sm leading-relaxed">{item.a}</p>
+                                            <p className="text-[15px] leading-relaxed text-[#8a8f98]">{item.a}</p>
                                         </div>
                                     </details>
                                 ))}
@@ -195,22 +185,19 @@ export default function FAQPage() {
                         </div>
                     ))}
 
-                    {/* CTA */}
-                    <div className="glass-card rounded-3xl border border-electric/20 p-8 text-center">
-                        <h3 className="font-outfit text-2xl font-bold text-white mb-2">Still have questions?</h3>
-                        <p className="text-slate-400 text-sm mb-6">Our team typically responds within a few hours during business hours (IST).</p>
+                    <div className="glass-card rounded-2xl p-8 text-center">
+                        <h3 className="text-2xl tracking-[-0.02em] font-medium text-[#f7f8f8] mb-2">Still have questions?</h3>
+                        <p className="text-[14px] text-[#8a8f98] mb-6">Our team responds quickly during business hours (IST).</p>
                         <a
                             href="mailto:outreach@synplixinfotech.in"
-                            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-electric text-white font-semibold text-sm shadow-glow-blue hover:shadow-none transition-all duration-300"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-electric hover:bg-purple text-white text-[14px] font-medium transition-colors"
                         >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
                             outreach@synplixinfotech.in
                         </a>
                     </div>
                 </div>
             </section>
+            <Footer />
         </main>
     )
 }

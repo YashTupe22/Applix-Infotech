@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export const metadata = {
     title: 'Terms of Service | Synplix Infotech Services',
@@ -83,50 +85,47 @@ We are not responsible for third-party services, hosting providers, or infrastru
 export default function TermsPage() {
     return (
         <main className="min-h-screen bg-navy text-white">
-            {/* Header */}
-            <section className="relative pt-32 pb-16 overflow-hidden">
-                <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(124,58,237,0.1) 0%, transparent 60%)' }} />
-                <div className="relative z-10 max-w-3xl mx-auto px-6">
-                    <Link href="/" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white mb-8 transition-colors">
+            <Navbar />
+            <section className="pt-36 pb-14">
+                <div className="max-w-3xl mx-auto px-6">
+                    <Link href="/" className="flex w-fit items-center gap-2 text-[13px] text-[#8a8f98] hover:text-[#d0d6e0] mb-8 transition-colors">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                         Back to Home
                     </Link>
-                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold text-purple border border-purple/30 bg-purple/10 mb-5">
+                    <span className="block w-fit px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-[12px] text-[#d0d6e0] mb-5">
                         Legal
                     </span>
-                    <h1 className="font-outfit text-4xl lg:text-5xl font-bold mb-4">
-                        Terms of <span className="gradient-text">Service</span>
-                    </h1>
-                    <p className="text-slate-400 text-lg">Last updated: February 2026</p>
+                    <h1 className="text-5xl tracking-[-0.04em] font-medium text-[#f7f8f8] mb-4">Terms of service</h1>
+                    <p className="text-[16px] text-[#8a8f98]">Last updated: February 2026</p>
                 </div>
             </section>
 
-            {/* Content */}
             <section className="pb-24">
                 <div className="max-w-3xl mx-auto px-6">
-                    <div className="glass-card rounded-3xl border border-white/8 p-8 lg:p-12 flex flex-col gap-10">
-                        <p className="text-slate-400 leading-relaxed">
+                    <div className="glass-card rounded-2xl p-8 lg:p-12 flex flex-col gap-10">
+                        <p className="text-[15px] text-[#8a8f98] leading-relaxed">
                             These Terms of Service govern your use of the Synplix Infotech Services website and the engagement of our professional services. Please read them carefully.
                         </p>
                         {sections.map((section) => (
                             <div key={section.title}>
-                                <h2 className="font-outfit text-xl font-bold text-white mb-3">{section.title}</h2>
-                                <p className="text-slate-400 leading-relaxed whitespace-pre-line text-sm">{section.content}</p>
+                                <h2 className="text-2xl tracking-[-0.02em] font-medium text-[#f7f8f8] mb-3">{section.title}</h2>
+                                <p className="text-[15px] text-[#8a8f98] leading-relaxed whitespace-pre-line">{section.content}</p>
                             </div>
                         ))}
                     </div>
 
                     <div className="mt-10 text-center">
-                        <p className="text-slate-500 text-sm">Questions? <a href="mailto:outreach@synplixinfotech.in" className="text-electric-light hover:underline">outreach@synplixinfotech.in</a></p>
+                        <p className="text-[14px] text-[#8a8f98]">Questions? <a href="mailto:outreach@synplixinfotech.in" className="text-[#7170ff] hover:text-[#828fff] transition-colors">outreach@synplixinfotech.in</a></p>
                         <div className="flex justify-center gap-6 mt-4">
-                            <Link href="/privacy-policy" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">Privacy Policy</Link>
-                            <Link href="/faq" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">FAQ</Link>
+                            <Link href="/privacy-policy" className="text-[14px] text-[#8a8f98] hover:text-[#d0d6e0] transition-colors">Privacy Policy</Link>
+                            <Link href="/faq" className="text-[14px] text-[#8a8f98] hover:text-[#d0d6e0] transition-colors">FAQ</Link>
                         </div>
                     </div>
                 </div>
             </section>
+            <Footer />
         </main>
     )
 }

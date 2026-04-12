@@ -8,27 +8,27 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        outfit: ['Outfit', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
+        outfit: ['Inter Variable', 'Inter', 'sans-serif'],
+        inter: ['Inter Variable', 'Inter', 'sans-serif'],
       },
       colors: {
-        navy: '#0A0F1E',
-        charcoal: '#0D1117',
-        electric: '#4F46E5',
-        cyan: '#06B6D4',
-        purple: '#7C3AED',
-        'electric-light': '#818CF8',
+        navy: '#08090a',
+        charcoal: '#0f1011',
+        electric: '#5e6ad2',
+        cyan: '#7170ff',
+        purple: '#828fff',
+        'electric-light': '#7170ff',
       },
       backgroundImage: {
-        'hero-gradient': 'linear-gradient(135deg, #0A0F1E 0%, #1a0533 50%, #0A0F1E 100%)',
-        'card-gradient': 'linear-gradient(135deg, rgba(79,70,229,0.15) 0%, rgba(124,58,237,0.1) 100%)',
-        'glow-gradient': 'radial-gradient(ellipse at center, rgba(79,70,229,0.3) 0%, transparent 70%)',
+        'hero-gradient': 'linear-gradient(180deg, #08090a 0%, #0b0c0e 50%, #08090a 100%)',
+        'card-gradient': 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+        'glow-gradient': 'radial-gradient(ellipse at center, rgba(94,106,210,0.14) 0%, transparent 70%)',
       },
       boxShadow: {
-        'glow-blue': '0 0 30px rgba(79,70,229,0.4), 0 0 60px rgba(79,70,229,0.15)',
-        'glow-cyan': '0 0 30px rgba(6,182,212,0.4), 0 0 60px rgba(6,182,212,0.15)',
-        'glow-purple': '0 0 30px rgba(124,58,237,0.4), 0 0 60px rgba(124,58,237,0.15)',
-        'glass': '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
+        'glow-blue': '0 0 0 1px rgba(255,255,255,0.08), 0 8px 24px rgba(0,0,0,0.25)',
+        'glow-cyan': '0 0 0 1px rgba(255,255,255,0.08), 0 8px 24px rgba(0,0,0,0.25)',
+        'glow-purple': '0 0 0 1px rgba(255,255,255,0.08), 0 8px 24px rgba(0,0,0,0.25)',
+        'glass': '0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.03)',
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

@@ -1,84 +1,59 @@
 'use client'
 import { motion } from 'framer-motion'
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (delay = 0) => ({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.7, delay, ease: 'easeOut' },
-    }),
-}
+const stats = [
+    { value: '40+', label: 'Products shipped' },
+    { value: '99.9%', label: 'Observed uptime' },
+    { value: '<48h', label: 'Proposal turnaround' },
+]
+
+const CHART_BARS = [32, 44, 38, 52, 48, 60, 58, 68, 72, 78, 82, 90]
+const MONTHS = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
 
 function DashboardMockup() {
     return (
-        <div className="w-full h-full p-4 flex flex-col gap-3 font-inter">
-            {/* Top bar */}
-            <div className="flex items-center justify-between mb-1">
-                <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
-                </div>
-                <div className="text-[10px] text-slate-500">Synplix SaaS Dashboard</div>
-                <div className="w-5 h-5 rounded-full bg-electric/30 flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-electric" />
-                </div>
+        <div className="h-full min-h-0 w-full p-3 sm:p-4 flex flex-col gap-3 bg-[#0f1011]">
+            <div className="flex items-center justify-between shrink-0">
+                <div className="text-[10px] sm:text-[11px] text-[#8a8f98]">Synplix Workspace</div>
+                <div className="px-2 py-0.5 rounded-full border border-white/10 text-[9px] sm:text-[10px] text-[#d0d6e0]">Live</div>
             </div>
 
-            {/* KPI Cards row */}
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-2 shrink-0">
                 {[
-                    { label: 'Revenue', value: '$48.2K', up: true },
-                    { label: 'Users', value: '2,847', up: true },
-                    { label: 'Uptime', value: '99.9%', up: true },
-                ].map((kpi) => (
-                    <div key={kpi.label} className="rounded-lg bg-white/5 border border-white/8 p-2">
-                        <div className="text-[9px] text-slate-500 mb-0.5">{kpi.label}</div>
-                        <div className="text-[12px] font-bold text-white font-outfit">{kpi.value}</div>
-                        <div className="text-[8px] text-green-400">↑ +12.4%</div>
+                    { label: 'MRR', value: '$24.8K' },
+                    { label: 'Users', value: '2,847' },
+                    { label: 'Latency', value: '48ms' },
+                ].map((item) => (
+                    <div key={item.label} className="rounded-md border border-white/10 bg-white/[0.02] p-2 min-w-0">
+                        <div className="text-[9px] sm:text-[10px] text-[#8a8f98] truncate">{item.label}</div>
+                        <div className="text-[11px] sm:text-[12px] text-[#f7f8f8] font-semibold mt-1 tabular-nums">{item.value}</div>
                     </div>
                 ))}
             </div>
 
-            {/* Chart area */}
-            <div className="flex-1 rounded-lg bg-white/5 border border-white/8 p-3 flex flex-col gap-2">
-                <div className="text-[9px] text-slate-400 font-medium">Monthly Growth</div>
-                <div className="flex-1 flex items-end gap-1.5">
-                    {[35, 52, 45, 68, 55, 78, 65, 88, 72, 95, 82, 100].map((h, i) => (
-                        <div key={i} className="flex-1 flex flex-col items-center gap-0.5">
+            <div className="rounded-md border border-white/10 bg-white/[0.02] p-3 flex flex-col flex-1 min-h-0 overflow-hidden">
+                <div className="text-[9px] sm:text-[10px] text-[#8a8f98] mb-2 shrink-0">Monthly growth</div>
+                <div className="relative h-[120px] sm:h-[132px] overflow-hidden">
+                    <div className="absolute inset-0 flex items-end justify-between gap-1 px-0.5 pb-5">
+                        {CHART_BARS.map((h, i) => (
                             <div
-                                className="w-full rounded-t-sm"
+                                key={`bar-${i}`}
+                                className="flex-1 min-w-0 rounded-t-sm bg-electric/70 origin-bottom"
                                 style={{
-                                    height: `${h * 0.6}%`,
-                                    background: i === 11
-                                        ? 'linear-gradient(to top, #4F46E5, #818CF8)'
-                                        : `rgba(79,70,229,${0.3 + (h / 100) * 0.4})`,
-                                    minHeight: '4px',
+                                    height: `${h}%`,
+                                    opacity: 0.35 + i * 0.045,
                                 }}
                             />
-                        </div>
-                    ))}
-                </div>
-                <div className="flex justify-between text-[7px] text-slate-600">
-                    <span>Jan</span><span>Apr</span><span>Jul</span><span>Dec</span>
-                </div>
-            </div>
-
-            {/* Activity list */}
-            <div className="rounded-lg bg-white/5 border border-white/8 p-2">
-                <div className="text-[9px] text-slate-400 font-medium mb-1.5">Recent Activity</div>
-                {[
-                    { icon: '🚀', text: 'New deployment pushed', time: '2m ago' },
-                    { icon: '👤', text: 'User #2847 signed up', time: '5m ago' },
-                    { icon: '💰', text: 'Payment $499 received', time: '12m ago' },
-                ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 py-1 border-b border-white/5 last:border-0">
-                        <span className="text-[10px]">{item.icon}</span>
-                        <span className="text-[8px] text-slate-400 flex-1">{item.text}</span>
-                        <span className="text-[7px] text-slate-600">{item.time}</span>
+                        ))}
                     </div>
-                ))}
+                    <div className="absolute bottom-0 left-0 right-0 flex justify-between gap-0.5 px-0.5 pt-1 border-t border-white/10">
+                        {MONTHS.map((m, i) => (
+                            <span key={`m-${i}`} className="flex-1 min-w-0 text-center text-[8px] sm:text-[9px] text-[#62666d] tabular-nums">
+                                {m}
+                            </span>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     )
@@ -86,177 +61,82 @@ function DashboardMockup() {
 
 export default function HeroSection() {
     return (
-        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient pt-20">
-
-            {/* Gradient Blobs */}
-            <div className="blob w-[600px] h-[600px] bg-electric top-[-100px] left-[-200px]" style={{ animationDelay: '0s' }} />
-            <div className="blob w-[500px] h-[500px] bg-purple top-[100px] right-[-150px]" style={{ animationDelay: '2s' }} />
-            <div className="blob w-[400px] h-[400px] bg-cyan bottom-[-50px] left-[30%]" style={{ animationDelay: '4s' }} />
-
-            {/* Grid overlay */}
+        <section id="hero" className="hero-surface relative min-h-[100svh] flex items-center pt-20 sm:pt-24 overflow-hidden">
             <div
-                className="absolute inset-0 opacity-[0.03]"
-                style={{
-                    backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
-                    backgroundSize: '60px 60px',
-                }}
+                className="absolute inset-0 opacity-30"
+                style={{ background: 'radial-gradient(ellipse 70% 45% at 70% 20%, rgba(94,106,210,0.16) 0%, transparent 70%)' }}
             />
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-center">
-
-                {/* Left: Copy */}
-                <div>
-                    <motion.div
-                        custom={0}
-                        initial="hidden"
-                        animate="visible"
-                        variants={fadeUp}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-electric/30 text-electric-light text-sm font-medium mb-6"
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div className="order-1">
+                    <motion.span
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.45 }}
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-[12px] font-medium text-[#d0d6e0] mb-6"
                     >
-                        <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
-                        Premium Web Development Studio
-                    </motion.div>
+                        Product engineering for startups and SaaS teams
+                    </motion.span>
 
                     <motion.h1
-                        custom={0.1}
-                        initial="hidden"
-                        animate="visible"
-                        variants={fadeUp}
-                        className="font-outfit text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] mb-6"
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.55, delay: 0.05 }}
+                        className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl leading-[1.02] tracking-[-0.04em] font-medium text-[#f7f8f8] mb-6"
                     >
-                        Build Scalable{' '}
-                        <span className="gradient-text">Web Apps & SaaS</span>{' '}
-                        That Power Business Growth
+                        Build software that scales with your business.
                     </motion.h1>
 
                     <motion.p
-                        custom={0.2}
-                        initial="hidden"
-                        animate="visible"
-                        variants={fadeUp}
-                        className="text-slate-400 text-lg lg:text-xl leading-relaxed mb-10 max-w-lg"
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.55, delay: 0.1 }}
+                        className="text-base sm:text-[18px] leading-relaxed text-[#8a8f98] max-w-xl mb-8 sm:mb-10"
                     >
-                        We design, develop, and deploy custom web systems for modern businesses — from MVPs to enterprise-grade SaaS platforms.
+                        We design and ship web apps, SaaS platforms, and automation systems with reliable architecture, clean UX, and fast delivery cycles.
                     </motion.p>
 
                     <motion.div
-                        custom={0.35}
-                        initial="hidden"
-                        animate="visible"
-                        variants={fadeUp}
-                        className="flex flex-wrap gap-4"
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.55, delay: 0.15 }}
+                        className="flex flex-wrap gap-3 mb-12"
                     >
-                        <motion.a
+                        <a
                             href="#contact"
-                            whileHover={{ scale: 1.04, boxShadow: '0 0 40px rgba(79,70,229,0.6)' }}
-                            whileTap={{ scale: 0.97 }}
-                            className="px-8 py-4 rounded-2xl bg-electric text-white font-semibold text-base shadow-glow-blue transition-all duration-300 inline-flex items-center gap-2"
+                            className="px-5 py-3 rounded-md bg-electric hover:bg-purple text-white text-[14px] font-medium transition-colors"
                         >
-                            Book a Free Consultation
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </motion.a>
-                        <motion.a
+                            Book a free consultation
+                        </a>
+                        <a
                             href="#showcase"
-                            whileHover={{ scale: 1.04 }}
-                            whileTap={{ scale: 0.97 }}
-                            className="px-8 py-4 rounded-2xl glass border border-white/20 text-white font-semibold text-base hover:border-electric/50 hover:bg-electric/5 transition-all duration-300 inline-flex items-center gap-2"
+                            className="px-5 py-3 rounded-md border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] text-[#d0d6e0] text-[14px] font-medium transition-colors"
                         >
-                            View Our Work
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                            </svg>
-                        </motion.a>
+                            View our work
+                        </a>
                     </motion.div>
 
-                    {/* Stats row */}
-                    <motion.div
-                        custom={0.5}
-                        initial="hidden"
-                        animate="visible"
-                        variants={fadeUp}
-                        className="flex gap-8 mt-12 pt-8 border-t border-white/10"
-                    >
-                        {[
-                            
-                        ].map((stat) => (
+                    <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 max-w-xl">
+                        {stats.map((stat) => (
                             <div key={stat.label}>
-                                <div className="text-2xl font-bold font-outfit gradient-text-blue">{stat.value}</div>
-                                <div className="text-xs text-slate-500 mt-0.5">{stat.label}</div>
+                                <div className="text-[24px] leading-none tracking-[-0.03em] font-medium text-[#f7f8f8]">{stat.value}</div>
+                                <div className="text-[12px] text-[#62666d] mt-1">{stat.label}</div>
                             </div>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
 
-                {/* Right: Mockup */}
                 <motion.div
-                    initial={{ opacity: 0, x: 60, rotateY: 15 }}
-                    animate={{ opacity: 1, x: 0, rotateY: 0 }}
-                    transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
-                    className="relative hidden lg:block"
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="order-2 w-full max-w-lg mx-auto lg:max-w-none lg:mx-0"
                 >
-                    <motion.div
-                        animate={{ y: [0, -12, 0] }}
-                        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                        className="relative"
-                    >
-                        {/* Glow ring behind card */}
-                        <div className="absolute inset-0 rounded-3xl bg-electric/20 blur-2xl scale-105" />
-
-                        {/* Main card */}
-                        <div className="relative glass-card rounded-3xl overflow-hidden border border-electric/20 shadow-glow-blue h-[440px]">
-                            <DashboardMockup />
-                        </div>
-
-                        {/* Floating badge 1 */}
-                        <motion.div
-                            animate={{ y: [0, -6, 0] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                            className="absolute -top-6 -left-8 glass-card rounded-2xl px-4 py-3 border border-cyan/30 shadow-glow-cyan"
-                        >
-                            <div className="flex items-center gap-2">
-                                <div className="w-3 h-3 rounded-full bg-green-400 animate-pulse" />
-                                <span className="text-xs font-semibold text-white">Live & Deployed</span>
-                            </div>
-                        </motion.div>
-
-                        {/* Floating badge 2 */}
-                        <motion.div
-                            animate={{ y: [0, 6, 0] }}
-                            transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                            className="absolute -bottom-4 -right-6 glass-card rounded-2xl px-4 py-3 border border-purple/30"
-                        >
-                            <div className="flex items-center gap-2">
-                                <svg className="w-4 h-4 text-electric-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                                <span className="text-xs font-semibold text-slate-300">99.9% Uptime</span>
-                            </div>
-                        </motion.div>
-                    </motion.div>
+                    <div className="rounded-xl border border-white/10 bg-[#191a1b] shadow-glass overflow-hidden h-[340px] sm:h-[380px] lg:h-[420px] flex flex-col">
+                        <DashboardMockup />
+                    </div>
                 </motion.div>
-
             </div>
-
-            {/* Scroll indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-            >
-                <span className="text-xs text-slate-600">Scroll to explore</span>
-                <motion.div
-                    animate={{ y: [0, 6, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                    className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center pt-1.5"
-                >
-                    <div className="w-1 h-2 rounded-full bg-electric" />
-                </motion.div>
-            </motion.div>
-
         </section>
     )
 }

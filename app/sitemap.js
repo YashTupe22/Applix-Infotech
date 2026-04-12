@@ -1,7 +1,24 @@
+import { SERVICES } from './lib/servicesConfig'
+
 export default function sitemap() {
     const baseUrl = 'https://synplixinfotech.in'
     const currentDate = new Date().toISOString()
-    
+
+    const serviceRoutes = [
+        {
+            url: `${baseUrl}/services`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.85,
+        },
+        ...SERVICES.map((s) => ({
+            url: `${baseUrl}/services/${s.slug}`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        })),
+    ]
+
     const routes = [
         {
             url: baseUrl,
@@ -21,6 +38,7 @@ export default function sitemap() {
             changeFrequency: 'monthly',
             priority: 0.8,
         },
+        ...serviceRoutes,
         {
             url: `${baseUrl}/faq`,
             lastModified: currentDate,

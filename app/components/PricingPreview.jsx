@@ -22,144 +22,96 @@ function previewFeatures(planId) {
 
 export default function PricingPreview() {
     return (
-        <section id="pricing" className="relative py-28 bg-navy overflow-hidden">
-            <div
-                className="absolute inset-0"
-                style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(79,70,229,0.07) 0%, transparent 70%)' }}
-            />
-
-            <div className="relative z-10 max-w-7xl mx-auto px-6">
-                {/* Header */}
+        <section id="pricing" className="py-16 sm:py-24 bg-charcoal">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 18 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-50px' }}
-                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45 }}
                     className="text-center mb-14"
                 >
-                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold text-electric-light border border-electric/30 bg-electric/10 mb-4">
+                    <span className="inline-flex px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-[12px] text-[#d0d6e0] mb-4">
                         Pricing
                     </span>
-                    <h2 className="font-outfit text-4xl lg:text-5xl font-bold mb-4">
-                        Flexible plans for every <span className="gradient-text">stage of growth</span>
+                    <h2 className="text-4xl lg:text-5xl tracking-[-0.03em] font-medium text-[#f7f8f8] mb-4">
+                        Flexible plans for every stage of growth
                     </h2>
-                    <p className="text-slate-400 text-lg max-w-xl mx-auto">
-                        Start free, upgrade when you&apos;re ready. All plans include GST billing and advanced reporting.
+                    <p className="text-[17px] text-[#8a8f98] max-w-2xl mx-auto">
+                        Start free and scale when you need more capacity, security, and collaboration features.
                     </p>
                 </motion.div>
 
-                {/* 4 Plan Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 mb-10 items-stretch">
                     {PLANS.map((plan, i) => {
                         const features = previewFeatures(plan.id)
                         return (
                             <motion.div
                                 key={plan.id}
-                                initial={{ opacity: 0, y: 35 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: '-20px' }}
-                                transition={{ duration: 0.55, delay: i * 0.1 }}
-                                whileHover={{ y: -5 }}
-                                className={`glass-card rounded-2xl p-7 border transition-all duration-300 flex flex-col gap-5 ${
-                                    plan.highlighted
-                                        ? 'border-purple/50 shadow-glow-purple'
-                                        : 'border-white/8 hover:border-white/20'
-                                }`}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.45, delay: i * 0.08 }}
+                                className={`glass-card rounded-xl p-5 sm:p-6 flex flex-col min-w-0 h-full ${plan.highlighted ? 'border-electric/40' : ''}`}
                             >
-                                {/* Plan name + popular tag */}
-                                <div>
-                                    <div className="flex items-center justify-between mb-1">
-                                        <span className="font-outfit font-bold text-white text-lg">{plan.label}</span>
-                                        {plan.highlighted && (
-                                            <span className="px-2 py-0.5 rounded-full bg-purple/20 border border-purple/30 text-purple text-xs font-semibold">
-                                                Popular
-                                            </span>
-                                        )}
-                                    </div>
-                                    <p className="text-slate-500 text-xs">{plan.tagline}</p>
+                                <div className="mb-2 min-h-[24px] flex items-center">
+                                    <span
+                                        className={`inline-flex w-fit px-2 py-0.5 rounded-full text-[11px] bg-electric/20 border border-electric/30 text-[#d0d6e0] ${
+                                            plan.highlighted ? '' : 'invisible pointer-events-none select-none'
+                                        }`}
+                                        aria-hidden={!plan.highlighted}
+                                    >
+                                        Popular
+                                    </span>
                                 </div>
+                                <span className="text-[20px] tracking-[-0.01em] font-medium text-[#f7f8f8] block mb-1">{plan.label}</span>
+                                <p className="text-[12px] text-[#62666d] mb-4 min-h-[2.5rem]">{plan.tagline}</p>
 
-                                {/* Price */}
-                                <div>
-                                    <div className="text-xs text-slate-500 mb-1 uppercase tracking-wide">Starting from</div>
+                                <div className="mb-5 min-h-[3rem] sm:min-h-[3.25rem] flex flex-col justify-end gap-1 w-full min-w-0 shrink-0">
                                     {plan.monthlyPrice === 0 ? (
-                                        <div className="font-outfit text-3xl font-bold text-electric-light">Free</div>
+                                        <>
+                                            <div className="text-2xl sm:text-3xl xl:text-[1.65rem] tracking-[-0.02em] font-medium text-[#f7f8f8] tabular-nums leading-tight">
+                                                Free
+                                            </div>
+                                            <span className="text-[12px] text-[#62666d]">Forever</span>
+                                        </>
                                     ) : (
-                                        <div className={`font-outfit text-3xl font-bold ${plan.highlighted ? 'text-purple' : 'text-white'}`}>
-                                            <PriceDisplay amount={plan.monthlyPrice} period="/mo" />
+                                        <div className="text-2xl sm:text-3xl xl:text-[1.65rem] tracking-[-0.02em] font-medium text-[#f7f8f8] tabular-nums leading-tight w-full min-w-0">
+                                            <PriceDisplay amount={plan.monthlyPrice} period="/mo" allowWrap />
                                         </div>
                                     )}
                                 </div>
 
-                                {/* Features */}
-                                <ul className="flex flex-col gap-2">
+                                <ul className="space-y-2 mb-6 flex-1 min-h-0">
                                     {features.map((f) => (
-                                        <li key={f} className="flex items-center gap-2 text-sm text-slate-400">
-                                            <svg
-                                                className={`w-3.5 h-3.5 shrink-0 ${plan.highlighted ? 'text-purple' : 'text-electric-light'}`}
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                                            </svg>
+                                        <li key={f} className="text-[14px] text-[#8a8f98] flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-electric" />
                                             {f}
                                         </li>
                                     ))}
                                 </ul>
 
-                                {/* Link */}
-                                <Link
-                                    href={`/pricing#${plan.id}`}
-                                    className={`mt-auto text-sm font-semibold flex items-center gap-1 hover:underline transition-all ${
-                                        plan.highlighted ? 'text-purple' : 'text-electric-light'
-                                    }`}
-                                >
-                                    See full plan
-                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
+                                <Link href={`/pricing#${plan.id}`} className="text-[13px] font-medium text-[#7170ff] hover:text-[#828fff] transition-colors">
+                                    See full plan →
                                 </Link>
                             </motion.div>
                         )
                     })}
                 </div>
 
-                {/* Full plans CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="text-center flex flex-wrap justify-center gap-4"
-                >
-                    <Link href="/pricing">
-                        <motion.span
-                            whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(79,70,229,0.4)' }}
-                            whileTap={{ scale: 0.97 }}
-                            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-electric text-white font-semibold text-base shadow-glow-blue transition-all duration-300 cursor-pointer"
-                        >
-                            View Full Pricing Plans
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </motion.span>
+                <div className="text-center flex flex-wrap justify-center gap-3">
+                    <Link href="/pricing" className="inline-flex items-center px-5 py-3 rounded-md bg-electric hover:bg-purple text-white text-[14px] font-medium transition-colors">
+                        View full pricing
                     </Link>
-                    <motion.a
+                    <a
                         href={SAAS_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(168,85,247,0.4)' }}
-                        whileTap={{ scale: 0.97 }}
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-purple text-white font-semibold text-base shadow-glow-purple transition-all duration-300 cursor-pointer"
+                        className="inline-flex items-center px-5 py-3 rounded-md border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] text-[#d0d6e0] text-[14px] font-medium transition-colors"
                     >
-                        <span>🚀</span>
                         Try Synplix SaaS
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                    </motion.a>
-                </motion.div>
+                    </a>
+                </div>
             </div>
         </section>
     )
