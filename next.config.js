@@ -3,6 +3,15 @@ const nextConfig = {
     reactStrictMode: true,
     compress: true,
     poweredByHeader: false,
+
+    async rewrites() {
+        return [
+            {
+                source: '/favicon.ico',
+                destination: '/favicon.png?v=20260412',
+            },
+        ]
+    },
     
     // Image optimization
     images: {
