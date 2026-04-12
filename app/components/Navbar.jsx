@@ -7,8 +7,6 @@ import CurrencySelector from './CurrencySelector'
 import ThemeToggle from './ThemeToggle'
 import { SERVICES } from '../lib/servicesConfig'
 
-const LOGO_ASSET = '/logo.png?v=20260412'
-
 const navLinks = [
     { label: 'How We Work', href: '/how-we-work' },
     { label: 'Showcase', href: '/#showcase' },
@@ -58,7 +56,7 @@ export default function Navbar() {
                 <Link href="/" aria-label="Synplix Home">
                     <motion.div whileHover={{ opacity: 0.9 }} className="flex items-center">
                         <Image
-                            src={LOGO_ASSET}
+                            src="/logo.png"
                             alt="Synplix Infotech"
                             width={138}
                             height={56}

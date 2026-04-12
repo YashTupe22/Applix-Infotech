@@ -9,9 +9,6 @@ const SITE_NAME = 'Synplix Infotech Services'
 const DEFAULT_TITLE = 'SaaS & Web Development Partner in Pune | Synplix Infotech Services'
 const DEFAULT_DESCRIPTION =
     'Synplix Infotech Services is a product-focused engineering partner in Pune, India. We help startups and SaaS teams build scalable websites, SaaS platforms, and digital products.'
-const BRAND_ASSET_VERSION = '20260412'
-const LOGO_ASSET = `/logo.png?v=${BRAND_ASSET_VERSION}`
-const FAVICON_ASSET = `/favicon.png?v=${BRAND_ASSET_VERSION}`
 
 const inter = Inter({
     subsets: ['latin'],
@@ -58,7 +55,7 @@ export const metadata = {
         locale: 'en_IN',
         images: [
             {
-                url: LOGO_ASSET,
+                url: '/logo.png',
                 alt: 'Synplix Infotech Services - SaaS and Web Development in Pune',
             },
         ],
@@ -67,7 +64,7 @@ export const metadata = {
         card: 'summary_large_image',
         title: DEFAULT_TITLE,
         description: 'Product-focused engineering partner for startups and SaaS teams in Pune. Book a free strategy call.',
-        images: [LOGO_ASSET],
+        images: ['/logo.png'],
         creator: '@synplix',
         site: '@synplix',
     },
@@ -91,10 +88,10 @@ export const metadata = {
     manifest: '/manifest.json',
     icons: {
         icon: [
-            { url: FAVICON_ASSET, type: 'image/png' },
+            { url: '/favicon.png', type: 'image/png' },
+            { url: '/favicon.svg', type: 'image/svg+xml' },
         ],
-        shortcut: [FAVICON_ASSET],
-        apple: [{ url: FAVICON_ASSET }],
+        apple: [{ url: '/favicon.png' }],
     },
 }
 
@@ -112,8 +109,8 @@ export default function RootLayout({ children }) {
                 <meta name="geo.placename" content="Pune, Maharashtra, India" />
                 <meta name="geo.position" content="18.5204;73.8567" />
                 <meta name="ICBM" content="18.5204, 73.8567" />
-                <link rel="icon" type="image/png" href={FAVICON_ASSET} />
-                <link rel="apple-touch-icon" href={FAVICON_ASSET} />
+                <link rel="icon" type="image/png" href="/favicon.png" />
+                <link rel="apple-touch-icon" href="/favicon.png" />
                 <link rel="manifest" href="/manifest.json" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -130,9 +127,9 @@ export default function RootLayout({ children }) {
                                 url: `${SITE_URL}/`,
                                 logo: {
                                     '@type': 'ImageObject',
-                                    url: `${SITE_URL}${LOGO_ASSET}`,
+                                    url: `${SITE_URL}/logo.png`,
                                 },
-                                image: `${SITE_URL}${LOGO_ASSET}`,
+                                image: `${SITE_URL}/logo.png`,
                                 description: DEFAULT_DESCRIPTION,
                                 telephone: '+918668918164',
                                 email: 'outreach@synplixinfotech.in',
