@@ -84,7 +84,7 @@ export default function HeroSection() {
                         transition={{ duration: 0.55, delay: 0.05 }}
                         className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl leading-[1.02] tracking-[-0.04em] font-medium text-[#f7f8f8] mb-6"
                     >
-                        Build software that scales with your business.
+                        Product-focused engineering partner for startups and SaaS teams in Pune.
                     </motion.h1>
 
                     <motion.p
@@ -93,7 +93,7 @@ export default function HeroSection() {
                         transition={{ duration: 0.55, delay: 0.1 }}
                         className="text-base sm:text-[18px] leading-relaxed text-[#8a8f98] max-w-xl mb-8 sm:mb-10"
                     >
-                        We design and ship web apps, SaaS platforms, and automation systems with reliable architecture, clean UX, and fast delivery cycles.
+                        We help startups and growing businesses design, build, and scale digital products - from MVPs to full SaaS platforms.
                     </motion.p>
 
                     <motion.div

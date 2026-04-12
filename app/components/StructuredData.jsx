@@ -61,51 +61,58 @@ export function WebSiteSchema() {
 export function ServiceSchema() {
     const schema = {
         '@context': 'https://schema.org',
-        '@type': 'Service',
-        serviceType: 'Web Development & SaaS Development',
+        '@type': 'ProfessionalService',
+        name: 'Synplix Infotech Services',
+        url: 'https://synplixinfotech.in',
+        description:
+            'Product-focused engineering partner in Pune for scalable websites, SaaS platforms, MVPs, and digital products.',
+        serviceType: [
+            'SaaS Product Development',
+            'Custom Website Development',
+            'MVP Development',
+            'UI/UX Design',
+            'API Integration & Backend Engineering',
+        ],
         provider: {
             '@type': 'Organization',
             name: 'Synplix Infotech Services',
             url: 'https://synplixinfotech.in',
         },
-        areaServed: {
-            '@type': 'Country',
-            name: 'India',
-        },
+        areaServed: ['Pune, Maharashtra, India', 'India', 'United States'],
         hasOfferCatalog: {
             '@type': 'OfferCatalog',
-            name: 'Development Services',
+            name: 'Engineering Services',
             itemListElement: [
                 {
                     '@type': 'Offer',
                     itemOffered: {
                         '@type': 'Service',
-                        name: 'Custom Web Application Development',
-                        description: 'Full-stack custom web applications with modern architecture and scalable infrastructure.',
+                        name: 'SaaS Product Development',
+                        description: 'End-to-end SaaS platform development for startups and scaling businesses.',
                     },
                 },
                 {
                     '@type': 'Offer',
                     itemOffered: {
                         '@type': 'Service',
-                        name: 'SaaS Platform Development',
-                        description: 'Multi-tenant SaaS platforms with billing, authentication, and subscription management.',
+                        name: 'Custom Website Development',
+                        description: 'High-performance, SEO-ready custom websites built for conversion.',
                     },
                 },
                 {
                     '@type': 'Offer',
                     itemOffered: {
                         '@type': 'Service',
-                        name: 'Business Automation',
-                        description: 'Workflow automation and business process optimization solutions.',
+                        name: 'MVP Development',
+                        description: 'Fast, lean MVP builds to validate ideas and attract early users.',
                     },
                 },
                 {
                     '@type': 'Offer',
                     itemOffered: {
                         '@type': 'Service',
-                        name: 'Content Creation Services',
-                        description: 'Professional content writing for websites, blogs, and social media.',
+                        name: 'UI/UX Design',
+                        description: 'User-first design systems and interactive prototypes for digital products.',
                     },
                 },
             ],

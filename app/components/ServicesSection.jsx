@@ -19,10 +19,10 @@ export default function ServicesSection() {
                         What we build
                     </span>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] font-medium text-[#f7f8f8] mb-4 px-1">
-                        Services designed to grow with your product
+                        Our engineering services
                     </h2>
                     <p className="text-base sm:text-[17px] text-[#8a8f98] max-w-2xl mx-auto px-1">
-                        From initial concept to launch and iteration, we cover strategy, product design, and engineering delivery in one flow.
+                        End-to-end digital solutions tailored for startups, SaaS products, and scaling businesses.
                     </p>
                 </motion.div>
 

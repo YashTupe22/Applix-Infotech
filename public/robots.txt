@@ -1,35 +1,16 @@
-# Robots.txt for Synplix Infotech Services
-# https://synplixinfotech.in
-
-# Allow all search engines
 User-agent: *
 Allow: /
 
-# Disallow API routes (not for indexing)
+# Block admin, private, and utility paths
+Disallow: /admin/
+Disallow: /dashboard/
 Disallow: /api/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /cdn-cgi/
 
-# Disallow temporary/cache files
-Disallow: /tmp/
-Disallow: /_next/static/chunks/
-
-# Allow important static assets
-Allow: /_next/static/media/
-Allow: /_next/static/css/
-Allow: /logo.png
-Allow: /favicon.png
-Allow: /og-image.png
-
-# Crawl-delay for politeness (optional)
-Crawl-delay: 1
-
-# Specific bot configurations
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
+# Crawl-delay for polite crawling
+Crawl-delay: 10
 
 User-agent: GPTBot
 Disallow: /
@@ -40,5 +21,4 @@ Disallow: /
 User-agent: CCBot
 Disallow: /
 
-# Sitemap location
 Sitemap: https://synplixinfotech.in/sitemap.xml

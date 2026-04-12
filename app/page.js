@@ -7,15 +7,12 @@ import WhyChooseSection from './components/WhyChooseSection'
 import PricingPreview from './components/PricingPreview'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
-import { OrganizationSchema, WebSiteSchema, ServiceSchema, LocalBusinessSchema, SoftwareApplicationSchema } from './components/StructuredData'
+import { ServiceSchema, SoftwareApplicationSchema } from './components/StructuredData'
 
 export default function Home() {
     return (
         <main>
-            <OrganizationSchema />
-            <WebSiteSchema />
             <ServiceSchema />
-            <LocalBusinessSchema />
             <SoftwareApplicationSchema />
             <Navbar />
             <HeroSection />

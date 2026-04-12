@@ -5,9 +5,25 @@ import { ServiceIcon } from '../components/SectionIcons'
 import { SERVICES } from '../lib/servicesConfig'
 
 export const metadata = {
-    title: 'Services',
-    description:
-        'Custom web apps, SaaS development, business automation, and content systems—built to grow with your product.',
+    title: 'Engineering Services in Pune | Synplix Infotech Services',
+    description: 'Our engineering services include SaaS product development, custom website development, MVP builds, business automation, and content systems for startups and growth-stage teams.',
+    keywords: 'engineering services Pune, SaaS product development Pune, custom website development Pune, MVP development India',
+    metadataBase: new URL('https://synplixinfotech.in'),
+    alternates: {
+        canonical: '/services',
+    },
+    openGraph: {
+        title: 'Engineering Services in Pune | Synplix Infotech Services',
+        description: 'End-to-end digital engineering services tailored for startups, SaaS products, and scaling businesses.',
+        type: 'website',
+        url: 'https://synplixinfotech.in/services',
+        siteName: 'Synplix Infotech Services',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Engineering Services in Pune | Synplix Infotech Services',
+        description: 'SaaS development, custom web engineering, MVP builds, and automation systems.',
+    },
 }
 
 export default function ServicesIndexPage() {
