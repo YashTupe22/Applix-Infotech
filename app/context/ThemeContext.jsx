@@ -6,13 +6,12 @@ const THEME_KEY = 'site-theme'
 const ThemeContext = createContext(null)
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('light')
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const storedTheme = typeof window !== 'undefined' ? localStorage.getItem(THEME_KEY) : null
-    const prefersLight = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches
-    const initialTheme = storedTheme || (prefersLight ? 'light' : 'dark')
+    const initialTheme = storedTheme || 'light'
     setTheme(initialTheme)
     setMounted(true)
   }, [])
